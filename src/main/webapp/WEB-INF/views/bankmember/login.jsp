@@ -33,8 +33,9 @@
                 
                 	 <button > 아이디 찾기</button> 
        				 <button > 비밀번호 찾기</button>
-                
-	                 <a href = "join.aa"><input type="button" value="회원가입 하기"></a>
+       				 
+       				 <br>
+	                 <a href = "./join.aa"><input type="button" value="회원가입 하기"></a>
 	       			 <a href= "/"><input type="button" value="메인 페이지로 돌아가기"></a>
         </div>
         </form>

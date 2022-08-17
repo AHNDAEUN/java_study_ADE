@@ -25,7 +25,7 @@
 <c:if test="${not empty bankmember}">
 
 <h3>${sessionScope.bankmember.name} 환영합니다. </h3>
-<a href= "./member/logout.aa">logout</a>
+<a href= "./bankmember/logout.aa">logout</a>
 
 </c:if>
 </div>
