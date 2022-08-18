@@ -50,7 +50,7 @@ public class BankMemberController {
 	public String join() {
 		
 		System.out.println("join Get 실행");
-		return "member/join";
+		return "bankmember/join";
 		
 	}
 	
@@ -82,7 +82,7 @@ public class BankMemberController {
 		List<BankMemberDTO> ar =bankMemberService.getSearchById(search);
 		model.addAttribute("list", ar);
 		ModelAndView mv = new  ModelAndView();
-		mv.setViewName("/member/list");
+		mv.setViewName("/bankmember/list");
 
 		return mv;
 	}
