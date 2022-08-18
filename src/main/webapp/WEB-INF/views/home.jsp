@@ -14,8 +14,8 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 <c:if test=" ${empty sessionScope.member}">
-<a href="./member/login.aa">Login</a>
-<a href="./member/join.aa">join</a>
+로그인<a href="./member/login.aa">Login</a>
+회원가입<a href="./member/join.aa">join</a>
 </c:if>
 <hr>
 <c:if test=" ${not empty sessionScope.member}">
@@ -24,9 +24,9 @@
 <a href="#">mypage</a> 
 </c:if>
 
-<a href="./bankbook/add.aa "> add </a>
-<a href="./member/search.aa "> member search </a>
-<a href="./bankbook/list.aa "> member list </a>
+상품 추가<a href="./bankbook/add.aa "> add </a>
+id 검색<a href="./member/search.aa "> member search </a>
+통장 정보<a href="./bankbook/list.aa "> member list </a>
 </body>
 </html>
 </body>
