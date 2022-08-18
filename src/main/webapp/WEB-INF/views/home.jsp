@@ -22,7 +22,6 @@
 <h3>${sessionScope.member.name} 환영합니다. </h3>
 <a href= "./member/logout.aa">logout</a>
 <a href="#">mypage</a> 
-<!--  ì£¼ìë¥¼ ëª¨ë¥¼ ë # íì¬ ì£¼ì -->
 </c:if>
 
 <a href="./bankbook/add.aa "> add </a>
