@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
 <html>
 <head>
 	<title>Home</title>
@@ -14,13 +14,13 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 <c:if test=" ${empty sessionScope.member}">
-로그인<a href="./member/login.aa">Login</a>
-회원가입<a href="./member/join.aa">join</a>
+로그인<a href="./bankmember/login.aa">Login</a>
+회원가입<a href="./bankmember/join.aa">join</a>
 </c:if>
 <hr>
 <c:if test=" ${not empty sessionScope.member}">
 <h3>${sessionScope.member.name} 환영합니다.</h3>
-<a href= "./member/logout.aa">logout</a>
+<a href= "./bankmember/logout.aa">logout</a>
 <a href="#">mypage</a> 
 </c:if>
 

@@ -37,7 +37,7 @@ public class BankMemberController {
 		
 		
 	}
-	@RequestMapping(value= "logout", method = RequestMethod.GET)
+	@RequestMapping(value= "logout.aa", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
 	
 		
@@ -62,7 +62,7 @@ public class BankMemberController {
 		int result= bankMemberService.setJoin(bankMemberDTO);
 		
 		
-		return "redirect:./login.aa";
+		return "redirect:./login";
 	}
 	
 	@RequestMapping( value= "search.aa", method = RequestMethod.GET)

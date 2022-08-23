@@ -13,51 +13,32 @@
 <body>
 
 
-<h1>bankmember list page</h1>
+<section class="container-fluid col-cg-4 mt-5 min-vh-auto">
+
+<div class="row">
+
 <form action ="search.aa" method ="POST"> 
 
-<table border ="1">
-
-	<thead>
-
-			<tr> 
-					<th>userName</th>
-					<th>password</th>
-					<th>name</th>
-					<th>email</th>				
-					<th>phone</th>
-					
-					
-				</tr>
-				
-			</thead>
-			
-			
-			<tbody>
-			
-				
-				<c:forEach items ="${requestScope.list}" var = "dto"> 
-				
-				<%-- <h3> ${pageScope.dto} </h3> --%>
-				<!-- 주소록 노출 -->
-				
-				<tr>
-					
-					<td> ${pageScope.dto.userName}</td>
-					<td> ${pageScope.dto.password}</td>
-					<td> ${pageScope.dto.name}</td>
-					<td> ${pageScope.dto.email}</td>
-					<td> ${pageScope.dto.phone}</td>
-					
-					</tr>	
-
-				</c:forEach>
-				
-				
-		</tbody>
+<table class="table table-striped-columns">
 
 
 </table>
+
+
+
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+</section>
+
 
 
 </form>
