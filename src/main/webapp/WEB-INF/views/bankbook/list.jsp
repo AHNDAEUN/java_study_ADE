@@ -41,7 +41,7 @@
 			  <% for (BankBookDTO bankbookDTO : ar) { %>
 			
 			<tr>
-			<td><a href ="./detail.iu?bookNum=<%=bankbookDTO.getBookNum()%>"><%= bankbookDTO.getBookName() %></a> </td>
+			<td><a href ="./detail.aa?bookNum=<%=bankbookDTO.getBookNum()%>"><%= bankbookDTO.getBookName() %></a> </td>
 			<td><%= bankbookDTO.getBookRate() %></td>
 			</tr>
 			<%} %>
@@ -52,7 +52,7 @@
 			
 	
 	</table>
-	<a href="./add.iu">상품등록</a>
+	<a href="./add.aa">상품등록</a>
 	
 	
 

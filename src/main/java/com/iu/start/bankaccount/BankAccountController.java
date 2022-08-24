@@ -23,7 +23,7 @@ public class BankAccountController {
 		int result = bankAccountService.add(bankAccountDTO);
 		
 		
-		return "redirect:./bankbook/list.iu";
+		return "redirect:./bankbook/list.aa";
 	}
 	
 

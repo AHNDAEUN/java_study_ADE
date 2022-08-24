@@ -49,7 +49,7 @@
 		<div>
 		    <br><br><br>
 		    <a href = "/" > <input type="submit" value="회원가입"> </a>
-		    <a href = "./login" > <button> 취소 </button> </a>
+		    <a href = "./login.aa" > <button> 취소 </button> </a>
 		
 		</div>
 		

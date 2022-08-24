@@ -37,16 +37,16 @@
 		</tr>
 	</table>
 	
-	<a href="./list.iu">리스트보기</a>
-	<input type="button" value="뒤로가기" onClick="location.href='list.iu'">
+	<a href="./list.aa">리스트보기</a>
+	<input type="button" value="뒤로가기" onClick="location.href='list.aa'">
 	<!-- 상대경로 -->
-	<a href = "../member/login.iu" >Login</a>
+	<a href = "../bankmember/login.aa" >Login</a>
 	<!-- 절대경로 -->
-	<a href ="../member/join.iu">Join</a>
-	<a href ="./update.iu?bookNum=${dto.bookNum}">Update</a>
-	<a href ="./delete.iu?bookNum=${dto.bookNum }">Delete</a>
+	<a href ="../bankmember/join.aa">Join</a>
+	<a href ="./bankbook/update.aa?bookNum=${dto.bookNum}">Update</a>
+	<a href ="./bankbook/delete.aa?bookNum=${dto.bookNum }">Delete</a>
 	<c:if test="${not empty sessionScope.member}">
-	<a href ="../bankaccount/add.iu?bookNum=${dto.bookNum }">가입하기</a>
+	<a href ="../bankaccount/add.aa?bookNum=${dto.bookNum }">가입하기</a>
 	</c:if>
 </body>
 </html>

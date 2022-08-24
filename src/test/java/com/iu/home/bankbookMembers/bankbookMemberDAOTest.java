@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.iu.start.myAbstractTest;
 import com.iu.start.bankmember.BankMemberDAO;
 
 public class bankbookMemberDAOTest extends myAbstractTest {

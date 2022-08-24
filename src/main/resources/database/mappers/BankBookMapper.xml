@@ -5,32 +5,32 @@
          
          <mapper namespace="com.iu.start.bankbook.BankBookDAO">
          	<!--bankbook 등록 -->
-         	<insert id="setBankBook" parameterType="com.iu.start.bankbook.BankBookDTO">
+         	<insert id="setBankBook" parameterType="BankBookDTO">
          		INSERT INTO BANKBOOK VALUES (#{bookNum},#{bookName},#{bookRate},#{bookSale})
          	</insert>
          	
          	<!-- bankbook list -->
-         	<select id="getList" resultType="com.iu.start.bankbook.BankBookDTO">
+         	<select id="getList" resultType="BankBookDTO">
          		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
          	</select>
          	
          	<!-- sale의 값을 바꿈 -->
-         	<update id="setChangeSale" parameterType="com.iu.start.bankbook.BankBookDTO" >
+         	<update id="setChangeSale" parameterType="BankBookDTO" >
          		UPDATE BANKBOOK SET BOOKSALE = #{bookSale} WHERE BOOKNUM = #{bookNum}
          	</update>
          	
          	<!-- BookNum의 값으로 조회 -->
-         	<select id="getDetail" parameterType="com.iu.start.bankbook.BankBookDTO" resultType="com.iu.start.bankbook.BankBookDTO">
+         	<select id="getDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
          		SELECT * FROM BANKBOOK WHERE BOOKNUM = #{bookNum}
          	</select>
          	
          	<!-- BankBook 업데이트 -->
-         	<update id="setUpdate" parameterType="com.iu.start.bankbook.BankBookDTO">
+         	<update id="setUpdate" parameterType="BankBookDTO">
          		UPDATE BANKBOOK SET BOOKNAME = #{bookName}, BOOKRATE = #{bookRate} WHERE BOOKNUM = #{bookNum}
          	</update>
          	
          	<!-- BankBook 삭제 -->
-         	<delete id="setDelete" parameterType="com.iu.start.bankbook.BankBookDTO">
+         	<delete id="setDelete" parameterType="BankBookDTO">
          		DELETE FROM BANKBOOK WHERE BOOKNUM = #{bookNum}
          	</delete>
         

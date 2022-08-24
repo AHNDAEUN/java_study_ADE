@@ -65,6 +65,7 @@ public class BankMemberController {
 		return "redirect:./login";
 	}
 	
+	
 	@RequestMapping( value= "search.aa", method = RequestMethod.GET)
 	public void getSearchById() throws Exception {
 		
