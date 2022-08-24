@@ -1,6 +1,7 @@
-package com.iu.home.notice;
+package com.iu.start.home.board.notice;
 
 import static org.junit.Assert.*;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import java.util.List;
@@ -10,10 +11,9 @@ import javax.management.loading.PrivateClassLoader;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.iu.home.board.impl.BoardDAO;
-import com.iu.home.board.impl.BoardDTO;
-import com.iu.home.board.notice.NoticeDAO;
-import com.iu.home.board.notice.NoticeDTO;
+import com.iu.start.home.board.impl.BoardDAO;
+import com.iu.start.home.board.impl.BoardDTO;
+import com.iu.start.home.board.notice.NoticeDAO;
 
 public class NoticeDAO_Test extends MyAbstractTest{
 	
@@ -23,7 +23,7 @@ public class NoticeDAO_Test extends MyAbstractTest{
 	@Test
 	public void getList() throws Exception{
 		// 리스트는 얻는게 아니라 가지고 오는 것
-		List<BoardDTO> ar = noticeDAO.getList();
+		List<BoardDTO> ar = noticeDAO.getList(null);
 		assertEquals(0, ar.size());
 		
 		
@@ -38,29 +38,25 @@ public class NoticeDAO_Test extends MyAbstractTest{
 	
 	@Test
 	public void setAddTest()  throws Exception{
+		
+		for(int i= 0; i<100 ; i++){
 		NoticeDTO noticeDTO =new NoticeDTO();
-		noticeDTO.setTitle("test");
-		noticeDTO.setWriter("test");
-		noticeDTO.setContents("test");
-		int result = noticeDAO.setAdd(null);
-		assertEquals(1, result);
+		noticeDTO.setTitle("TITLE"+i);
+		noticeDTO.setWriter("test"+i);
+		noticeDTO.setContents("test"+i);
 		
+		int result = noticeDAO.setAdd(noticeDTO);
 		
+		if( i%10 ==0) { 
+            Thread.sleep(500);    
+		}
+		System.out.println("finish!!");
+		
+		}
+	
+	
 	}
 	
-	
-//	@Test
-//	public void getDetail(BoardDTO barBoardDTO) throws Exception{}
-//	
-//	
-//	@Test
-//	public void setAdd(BoardDTO baoBoardDTO) throws Exception{}
-//		
-//	@Test
-//	public void setUpdate(BoardDTO boardDTO) throws Exception{}
-//	
-//	@Test
-//	public void setDelete(BoardDTO boardDTO) throws Exception{}
 
 	}
 

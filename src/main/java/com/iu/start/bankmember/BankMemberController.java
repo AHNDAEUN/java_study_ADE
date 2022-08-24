@@ -22,11 +22,14 @@ public class BankMemberController {
 	private BankMemberService bankMemberService;
 	
 	@RequestMapping(value= "login.aa", method = RequestMethod.GET)
-	public void login() throws Exception {}
+	public String login() throws Exception {
+		System.out.println("log get");
+	 return "bankmember/login";
+	}
 	
 	@RequestMapping(value= "login.aa", method= RequestMethod.POST )
 	public String login( HttpSession session, BankMemberDTO bankMemberDTO) throws Exception{
-		
+		System.out.println("logpost");
 
 		bankMemberDTO = bankMemberService.getLogin(bankMemberDTO);
 		System.out.println(bankMemberDTO);

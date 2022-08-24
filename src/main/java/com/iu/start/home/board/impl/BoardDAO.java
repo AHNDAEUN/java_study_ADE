@@ -1,12 +1,13 @@
-package com.iu.home.board.impl;
+package com.iu.start.home.board.impl;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BoardDAO {
 	
 	//글목록
 	
-	public List<BoardDTO> getList() throws Exception;
+	public List<BoardDTO> getList(Map<String, Long> map) throws Exception;
 	
 	// 글상세보기
 	

@@ -16,22 +16,24 @@
 <body>
 
 <c:import url="../template/header.jsp"></c:import>
-
+	<form action ="login.aa" method= "POST"> 
+	<button type ="submit">아아아아</button>
+</form>
 <section class= "container-fluid col-lg-4 mt-5 min-vh-100">
 
 	<div class = "row">
 	
-	<form action ="/login.aa" method= "post">
+
 
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="email" name="userName" id="form2Example1" class="form-control" />
+    <input type="email" name="userName" value="usr2" id="form2Example1" class="form-control" />
     <label class="form-label" for="form2Example1">Email address</label>
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <input type="password" name="password" id="form2Example2" class="form-control" />
+    <input type="password" name="password" value="pw2" id="form2Example2" class="form-control" />
     <label class="form-label" for="form2Example2">Password</label>
   </div>
 
@@ -74,7 +76,9 @@
       <i class="fab fa-github"></i>
     </button>
   </div>
-</form>
+  
+  
+
 	
 	
 	
@@ -83,6 +87,8 @@
 
 
 </section>
+
+</form>
 
 		<c:import url="../template/footer.jsp"></c:import>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

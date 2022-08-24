@@ -1,4 +1,4 @@
-package com.iu.home.board.qna;
+package com.iu.start.home.board.qna;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.iu.home.board.impl.BoardDTO;
-import com.iu.home.board.notice.NoticeService;
+import com.iu.start.home.board.impl.BoardDTO;
+import com.iu.start.home.board.notice.NoticeService;
 
 @Controller
 public class QnaController {

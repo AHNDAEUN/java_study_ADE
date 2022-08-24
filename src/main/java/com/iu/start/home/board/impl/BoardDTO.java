@@ -1,4 +1,4 @@
-package com.iu.home.board.impl;
+package com.iu.start.home.board.impl;
 
 import java.sql.Date;
 

@@ -30,7 +30,7 @@ public class BankMemberService {
 
 	public List<BankMemberDTO> getSearchById (String search) throws Exception{
 		
-		return BankMemberDAO.getSearchById(search);
+		return bankMemberDAO.getSearchById(search);
 }
 
 }

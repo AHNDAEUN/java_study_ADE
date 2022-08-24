@@ -4,34 +4,37 @@
 		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
-		    <mapper namespace="com.iu.home.board.notice.NoticeDAO">
+		    <mapper namespace="com.iu.start.home.board.notice.NoticeDAO">
 		    
-		    <select id= "getList"  resultType="com.iu.home.board.notice.NoticeDTO">
-		         SELECT * FROM NOTICE ORDER BY NUM DESC;
+		    <select id= "getList"  resultType="com.iu.start.home.board.notice.NoticeDTO" parameterType="java.util.Map">
+		         SELECT * FROM
+				(SELECT  ROWNUM R,N.* FROM
+				(SELECT * FROM NOTICE ORDER BY NUM DESC) N)
+				WHERE R BETWEEN #{startRow} AND #{lastRow}
 					<!--  num이 높은 숫자가 최신글로-->
 		    
 		    </select> 
 		    
-		    <select id= "getDetail" parameterType="com.iu.home.board.impl.BoardDTO"  resultType="com.iu.home.board.notice.NoticeDTO">
+		    <select id= "getDetail" parameterType="com.iu.start.home.board.impl.BoardDTO"  resultType="com.iu.start.home.board.notice.NoticeDTO">
 		    SELECT * FROM NOTICE WHERE NUM= #{num}
 		   
 		    </select>
 		    
 		    
-		    <insert id= "setAdd" parameterType="com.iu.home.board.impl.BoardDTO">
+		    <insert id= "setAdd" parameterType="com.iu.start.home.board.impl.BoardDTO">
 		    
 		     INSERT INTO NOTICE VALUES ( BOARD_SQL.NEXTVAL,#{title}, #{contents}, #{writer}, SYSDATE, 0)
 		    
 		    
 		    </insert>
 		    
-		    <update id= "setUpdate" parameterType="com.iu.home.board.impl.BoardDTO">
+		    <update id= "setUpdate" parameterType="com.iu.start.home.board.impl.BoardDTO">
 		    
 		    UPDATE NOTICE SET TITLE = #{title} CONTENTS= #{contents} WHERE NUM = #{num}
 		    
 		    
 		    </update>
-		    <delete id= "setDelete" parameterType="com.iu.home.board.impl.BoardDTO">
+		    <delete id= "setDelete" parameterType="com.iu.start.home.board.impl.BoardDTO">
 		    
 		     DELETE FROM NOTICE WHERE NUM = #{num}
 		    

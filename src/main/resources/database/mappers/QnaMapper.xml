@@ -4,34 +4,34 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
 		    
-		   <mapper namespace="com.iu.home.board.qna.QnaDAO">
+		   <mapper namespace="com.iu.start.home.board.qna.QnaDAO">
 		    
-		    <select id= "getList"  resultType="com.iu.home.board.notice.NoticeDTO">
+		    <select id= "getList"  resultType="com.iu.start.home.board.notice.NoticeDTO">
 		         SELECT * FROM QNA ORDER BY NUM DESC;
 					
 		    
 		    </select> 
 		    
-		    <select id= "getDetail" parameterType="com.iu.home.board.impl.BoardDTO"  resultType="com.iu.home.board.notice.NoticeDTO">
+		    <select id= "getDetail" parameterType="com.iu.start.home.board.impl.BoardDTO"  resultType="com.iu.start.home.board.notice.NoticeDTO">
 		    SELECT * FROM QNA WHERE NUM= #{num}
 		   
 		    </select>
 		    
 		    
-		    <insert id= "setAdd" parameterType="com.iu.home.board.impl.BoardDTO">
+		    <insert id= "setAdd" parameterType="com.iu.start.home.board.impl.BoardDTO">
 		    
 		     INSERT INTO QNA VALUES ( BOARD_SQL.NEXTVAL,#{title}, #{contents}, #{writer}, SYSDATE, 0,0,0,0)
 		    
 		    
 		    </insert>
 		    
-		    <update id= "setUpdate" parameterType="com.iu.home.board.impl.BoardDTO">
+		    <update id= "setUpdate" parameterType="com.iu.start.home.board.impl.BoardDTO">
 		    
 		    UPDATE QNA SET TITLE = #{title} CONTENTS= #{contents} WHERE NUM = #{num}
 		    
 		    
 		    </update>
-		    <delete id= "setDelete" parameterType="com.iu.home.board.impl.BoardDTO">
+		    <delete id= "setDelete" parameterType="com.iu.start.home.board.impl.BoardDTO">
 		    
 		     DELETE FROM QNA WHERE NUM = #{num}
 		    

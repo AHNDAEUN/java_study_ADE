@@ -1,4 +1,4 @@
-package com.iu.home.board.qna;
+package com.iu.start.home.board.qna;
 
 import java.util.List;
 
@@ -6,15 +6,15 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.iu.home.board.impl.BoardDAO;
-import com.iu.home.board.impl.BoardDTO;
+import com.iu.start.home.board.impl.BoardDAO;
+import com.iu.start.home.board.impl.BoardDTO;
 
 @Repository
 public class QnaDAO  {
 
 	@Autowired
 	private SqlSession session;
-	private final String NAMESPACE= "com.iu.home.qna.QnaDAO.";
+	private final String NAMESPACE= "com.iu.start.home.qna.QnaDAO.";
 	
 	
 

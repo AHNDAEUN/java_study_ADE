@@ -1,6 +1,6 @@
-package com.iu.home.board.qna;
+package com.iu.start.home.board.qna;
 
-import com.iu.home.board.impl.BoardDTO;
+import com.iu.start.home.board.impl.BoardDTO;
 
 public class QnaDTO extends BoardDTO {
 	

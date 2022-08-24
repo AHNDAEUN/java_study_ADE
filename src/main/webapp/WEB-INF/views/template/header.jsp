@@ -17,12 +17,12 @@
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                         <a class="nav-link active" href="/bankbook/list.aa">상품리스트</a>
-                        <a class="nav-link active" href="/board/list.aa">공지사항</a>
+                        <a class="nav-link active" href="/notice/list.aa">공지사항</a>
                         <a class="nav-link active" href="/bankmember/search.aa">회원검색</a>
                         
 						<c:choose>
 						
-						<c:when test="${not empty bankmember}">
+						<c:when test="${not empty sessionScope.bankmember}">
                         <a class="nav-link active" href="/bankmember/logout.aa">로그아웃</a>
                         <a class="nav-link active" href="/bankmember/mypage.aa">마이페이지</a>
 						</c:when>

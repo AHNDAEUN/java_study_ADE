@@ -1,4 +1,4 @@
-package com.iu.home.notice;
+package com.iu.start.home.board.notice;
 
 import static org.junit.Assert.*;
 

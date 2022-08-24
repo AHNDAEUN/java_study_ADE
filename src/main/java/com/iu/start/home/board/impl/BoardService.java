@@ -1,4 +1,4 @@
-package com.iu.home.board.impl;
+package com.iu.start.home.board.impl;
 
 import java.util.List;
 
@@ -6,9 +6,7 @@ public interface BoardService {
 	
 	//글목록
 	
-		public List<BoardDTO> getList() throws Exception;
-		
-		
+		public List<BoardDTO> getList(Long page) throws Exception;
 		
 		
 		// 글상세보기

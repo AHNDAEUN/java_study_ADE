@@ -20,7 +20,7 @@
     <c:import url="./template/header.jsp"></c:import>
     
 
-
+			${sessionScope.bankmember}
      <!-- 이미지 나오는지 확인!
         <img src="/resources/images/KakaoTalk_20220822_194608984.jpg " alt="" srcset="">
       -->

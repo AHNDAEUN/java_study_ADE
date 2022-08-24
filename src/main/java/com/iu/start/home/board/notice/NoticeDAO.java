@@ -1,6 +1,7 @@
-package com.iu.home.board.notice;
+package com.iu.start.home.board.notice;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.Spring;
 
@@ -8,33 +9,34 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.iu.home.board.impl.BoardDAO;
-import com.iu.home.board.impl.BoardDTO;
+import com.iu.start.home.board.impl.BoardDAO;
+import com.iu.start.home.board.impl.BoardDTO;
+
 @Repository
-public abstract class NoticeDAO implements BoardDAO{
+public class NoticeDAO implements BoardDAO{
 	// abstract or orverriding
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE= "com.iu.home.notice.NoticeDAO.";
+	private final String NAMESPACE="com.iu.start.home.board.notice.NoticeDAO.";
 	
 	
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(Map<String, Long> map) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getList");
+		return sqlSession.selectList(NAMESPACE+"getList", map);
 	}
 
 	@Override
-	public BoardDTO getDetail(BoardDTO barBoardDTO) throws Exception {
+	public BoardDTO getDetail(BoardDTO BoardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"getDetail", barBoardDTO);
+		return sqlSession.selectOne(NAMESPACE+"getDetail", BoardDTO);
 	}
 
 	@Override
-	public int setAdd(BoardDTO baoBoardDTO) throws Exception {
+	public int setAdd(BoardDTO BoardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(NAMESPACE+"setAdd", baoBoardDTO);
+		return sqlSession.insert(NAMESPACE+"setAdd", BoardDTO);
 	}
 
 	@Override
