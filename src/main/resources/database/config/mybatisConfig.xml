@@ -15,7 +15,8 @@
 					<typeAlias type="java.lang.String" alias="String"/>
 								<typeAlias type="java.lang.Long" alias="Long"/>
 			
-							 
+							<typeAlias type="com.iu.start.home.util.Pager" alias="Pager"/>
+													 
 				 
 	  
 				  

@@ -15,7 +15,7 @@
 		    
 		    
 		    
-		    <select id= "getList"  resultType="com.iu.start.home.board.notice.NoticeDTO" parameterType="java.util.Map">
+		    <select id= "getList"  resultType="com.iu.start.home.board.notice.NoticeDTO" parameterType="Pager">
 		         SELECT * FROM
 				(SELECT  ROWNUM R,N.* FROM
 				(SELECT * FROM NOTICE ORDER BY NUM DESC) N)

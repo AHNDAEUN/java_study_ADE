@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.home.board.impl.BoardDTO;
+import com.iu.start.home.util.Pager;
 
 @Controller
 @RequestMapping("/notice/*")
@@ -23,15 +25,17 @@ public class NoticeCotroller {
 	
 	//글목록
 	@RequestMapping(value = "list.aa", method = RequestMethod.GET)
-	public ModelAndView getList(@RequestParam(defaultValue = "1") Long page)throws Exception{
-		
-		System.out.println("list");
+	public ModelAndView getList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("page"+page);
-		List<BoardDTO> ar = noticeService.getList(page);
+	System.out.println(pager.getPage());
+		System.out.println(pager);
+		
+//		System.out.println("page"+page);
+		List<BoardDTO> ar = noticeService.getList(pager);
 		
 		mv.addObject("list", ar);
+		mv.addObject("pager",pager);
 		mv.setViewName("board/list");
 		return mv; 
 	}

@@ -3,6 +3,8 @@ package com.iu.start.home.board.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.iu.start.home.util.Pager;
+
 public interface BoardDAO {
 	
 	
@@ -11,7 +13,7 @@ public interface BoardDAO {
 	public Long getCount() throws Exception;
 	//글목록
 	
-	public List<BoardDTO> getList(Map<String, Long> map) throws Exception;
+	public List<BoardDTO> getList(Pager pager) throws Exception;
 	
 	// 글상세보기
 	
