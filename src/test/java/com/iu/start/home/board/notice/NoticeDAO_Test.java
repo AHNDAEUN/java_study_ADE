@@ -20,12 +20,12 @@ public class NoticeDAO_Test extends MyAbstractTest{
 	@Autowired
 	private NoticeDAO noticeDAO;
 
-	@Test
-	public void getList() throws Exception{
-		// 리스트는 얻는게 아니라 가지고 오는 것
-		List<BoardDTO> ar = noticeDAO.getList(null);
-		assertEquals(0, ar.size());
-		
+//	@Test
+//	public void getList() throws Exception{
+//		// 리스트는 얻는게 아니라 가지고 오는 것
+//		List<BoardDTO> ar = noticeDAO.getList();
+//		assertEquals(0, ar.size());
+//		
 		
 		
 		/*
@@ -34,7 +34,7 @@ public class NoticeDAO_Test extends MyAbstractTest{
 		 * 
 		 * caused by 이유
 		 */	 
-	}
+//	}
 	
 	@Test
 	public void setAddTest()  throws Exception{
@@ -50,13 +50,21 @@ public class NoticeDAO_Test extends MyAbstractTest{
 		if( i%10 ==0) { 
             Thread.sleep(500);    
 		}
-		System.out.println("finish!!");
 		
 		}
-	
+		
+		System.out.println("finish!!");
 	
 	}
+			@Test
+			public void getCountTest() throws Exception {
+				
+				long count = noticeDAO.getCount();
+				assertEquals(3, count);
+			
 	
-
+	
+	
+}
 	}
 

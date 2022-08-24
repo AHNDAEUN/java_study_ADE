@@ -16,11 +16,19 @@ import com.iu.start.home.board.impl.BoardDTO;
 public class NoticeDAO implements BoardDAO{
 	// abstract or orverriding
 	
+	
+	
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.start.home.board.notice.NoticeDAO.";
 	
 	
+	
+	@Override
+	public Long getCount() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getCount");
+	}
 	@Override
 	public List<BoardDTO> getList(Map<String, Long> map) throws Exception {
 		// TODO Auto-generated method stub

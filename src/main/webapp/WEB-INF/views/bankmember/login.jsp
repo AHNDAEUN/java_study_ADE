@@ -17,6 +17,8 @@
 
 <c:import url="../template/header.jsp"></c:import>
 	<form action ="login.aa" method= "POST"> 
+	
+	<imput type ="text" name="">
 	<button type ="submit">아아아아</button>
 </form>
 <section class= "container-fluid col-lg-4 mt-5 min-vh-100">

@@ -6,6 +6,15 @@
 		    
 		    <mapper namespace="com.iu.start.home.board.notice.NoticeDAO">
 		    
+		  
+			 <select id= "getCount"  resultType="Long" >
+		       
+		        SELECT COUNT (num) FROM NOTICE
+		    
+		    </select> 
+		    
+		    
+		    
 		    <select id= "getList"  resultType="com.iu.start.home.board.notice.NoticeDTO" parameterType="java.util.Map">
 		         SELECT * FROM
 				(SELECT  ROWNUM R,N.* FROM
