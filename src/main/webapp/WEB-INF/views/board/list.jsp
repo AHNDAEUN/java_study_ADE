@@ -11,20 +11,32 @@
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
+  <c:if test="${pager.pre}">
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
+      <a class="page-link" href="./list.aa?page=${pager.startNum-1}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
+    </c:if>
+    
     
     <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
         
-        <li class="page-item"><a class="page-link" href="./list.aa?page=${i}">${1}</a></li>
+        <li class="page-item"><a class="page-link" href="./list.aa?page=${i}">${i}</a></li>
     
     </c:forEach>
     
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+    <%-- <c:choose>
+    <c:when test="${pager.next}"></c:when>
+    
+    <c:otherwise>
+    <li class="page-item disabled">
+    </c:otherwise>
+    </c:choose> --%>
+   
+    <li class="page-item ${pager.next?'':'disabled'}"><!-- jsp 3항 연산자 -->
+    <!--  true라면 ?로 아무이상이 없고 : flase일 경우 disabled를 줌-->
+      <a class="page-link" href="./list.aa?page=${pager.lastNum+1}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

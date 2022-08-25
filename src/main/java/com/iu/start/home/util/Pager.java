@@ -17,7 +17,12 @@ public class Pager {
 	private Long startRow; //mapper
 	private Long lastRow; //mapper
 	private Long perPage; 
-	private Long perBlock; 
+	private Long perBlock;
+	
+	// 이전 블럭의 유무 - 이전블럭이 있으면 true, 없으면 false
+	private boolean pre;
+	//다음 블럭의 유무 - 다음블럭이 있으면 true, 없으면 false
+	private boolean next;
 	
 	public Pager() {
 		// TODO Auto-generated constructor stub
@@ -44,6 +49,12 @@ public class Pager {
 			totalPage++;
 						
 		}
+		//2-1 totalPage보다 page가 더 클 경우
+		System.out.println(this.getPage());
+		System.out.println(totalPage);
+		if (this.getPage()>totalPage) {
+			this.setPage(totalPage);
+		}
 		
 		//3. totalPage로 totalBlock 구하기
 		Long totalBlock= totalPage/this.getPerBlock();
@@ -54,15 +65,31 @@ public class Pager {
 		
 		// 4. parameter로 넘어온 Page로 curBlock 찾기
 		Long curBlock= this.getPage()/this.getPerBlock();
-		if(this.getPerPage()%this.getPerBlock() != 0) {
+		if(this.getPage()%this.getPerBlock() != 0) {
 			curBlock++;
 			
 		}
 		//5. curBlock으로 startNum, lastNum 구하기
 		this.startNum= (curBlock-1)*this.getPerBlock()+1;
 		this.lastNum= curBlock * this.getPerBlock();
+	
+	
+	//6. 현재 블럭(curBlock)이 totalBlock과 같을 때 현재블럭이 마지막 블럭됨
+	if( curBlock== totalBlock) {
+		this.lastNum= totalPage;	
+		
 	}
 	
+	//7. 이전, 다음 블럭의 유무
+	if(curBlock>1) { // 현재블럭보다 크다는 것은 2,3,4,블럭을 말함
+		pre=true;
+	}
+	
+	if(curBlock<totalBlock) {// 이조건에 안맞으면 기본값 false가 들어감
+		next=true;
+		
+	}
+	}
 	
 	public Long getStartNum() {
 		return startNum;
@@ -77,7 +104,7 @@ public class Pager {
 		this.lastNum = lastNum;
 	}
 	public Long getPage() {
-		if(this.page==null) {
+		if(this.page==null || this.page< 1) {
 			this.page=1L;
 			}
 		return page;
@@ -114,6 +141,22 @@ public class Pager {
 	}
 	public void setPerBlock(Long perBlock) {
 		this.perBlock = perBlock;
+	}
+
+	public boolean isPre() { // is가 있는 메서드는 boolean타입
+		return pre;
+	}
+
+	public void setPre(boolean pre) {
+		this.pre = pre;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	public void setNext(boolean next) {
+		this.next = next;
 	} 
 	
 	

@@ -13,6 +13,9 @@
 
 
 </head>
+<style>
+	.wrapper{align-items : center;}
+</style>
 <body>
 
 <c:import url="../template/header.jsp"></c:import>
@@ -29,7 +32,7 @@
 
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="email" name="userName" value="usr2" id="form2Example1" class="form-control" />
+    <input type="text" name="userName" value="usr2" id="form2Example1" class="form-control" />
     <label class="form-label" for="form2Example1">Email address</label>
   </div>
 
@@ -56,7 +59,7 @@
   </div>
 
   <!-- Submit button -->
-  <a href="/"><button type="button" class="btn btn-primary btn-block mx-1"> 로그인 </button> </a>
+  <a href="/"><button type="submit" class="btn btn-primary wrapper "> 로그인 </button> </a>
 
   <!-- Register buttons -->
   <div class="text-center">

@@ -29,6 +29,7 @@ public class NoticeCotroller {
 		ModelAndView mv = new ModelAndView();
 		
 	System.out.println(pager.getPage());
+	   
 		System.out.println(pager);
 		
 //		System.out.println("page"+page);

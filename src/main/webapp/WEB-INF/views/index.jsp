@@ -25,7 +25,7 @@
         <img src="/resources/images/KakaoTalk_20220822_194608984.jpg " alt="" srcset="">
       -->
 
-      <section  class=" container-fluid-lg-8 mt-4">
+      <section  class=" container-fluid col-lg-5 mt-4">
          <!-- 중앙에 들어가는 contents 부분-->
 
 
