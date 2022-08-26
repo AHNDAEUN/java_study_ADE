@@ -8,46 +8,60 @@ import org.springframework.stereotype.Repository;
 
 import com.iu.start.home.board.impl.BoardDAO;
 import com.iu.start.home.board.impl.BoardDTO;
+import com.iu.start.home.util.Pager;
 
 @Repository
-public class QnaDAO  {
+public class QnaDAO implements BoardDAO {
 
 	@Autowired
 	private SqlSession session;
-	private final String NAMESPACE= "com.iu.start.home.qna.QnaDAO.";
+	private final String NAMESPACE= "com.iu.start.home.board.qna.QnaDAO.";
 	
-	
-
-	public List<QnaDTO> getList() throws Exception {
+	@Override
+	public Long getCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return session.selectList(NAMESPACE+"getList");
+		return session.selectOne(NAMESPACE+"getCount", pager);
+	}
+	
+	@Override
+	public List<BoardDTO> getList(Pager pager) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(NAMESPACE+"getList", pager);
 	}
 
-
-	public QnaDTO getDetail(QnaDTO qnaDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return session.selectOne(NAMESPACE+"getDetail",qnaDTO);
-	}
-
-
-	public int setAdd(QnaDTO qnaDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return session.insert(NAMESPACE+"setAdd", qnaDTO);
-	}
-
-	
-	public int setUpdate(QnaDTO qnaDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return session.update(NAMESPACE+"setUpdate",qnaDTO);
-	}
-
-	
-	public int setDelete(QnaDTO qnaDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return session.delete(NAMESPACE+"setDelete",qnaDTO);
+	@Override
+	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		
-
-		
+		// TODO Auto-generated method stub
+		return session.selectOne(NAMESPACE+"getDetail", boardDTO);
 	}
 
+	@Override
+	public int setAdd(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return session.insert(NAMESPACE+"setAdd", boardDTO);
+	}
+
+	@Override
+	public int setUpdate(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return session.update(NAMESPACE+"setUpdate", boardDTO);
+	}
+
+	@Override
+	public int setDelete(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return session.delete(NAMESPACE+"setDelete", boardDTO);
+	}
+
+	public int setStepUpdate(BoardDTO boardDTO) throws Exception {
+		
+		return session.update(NAMESPACE+"setStepUpdate",boardDTO);
+		
+	}
+	
+	public int setReplyAdd(BoardDTO boardDTO) throws Exception {
+		
+		return session.insert(NAMESPACE+"setReplyAdd",boardDTO);
+	}
 }

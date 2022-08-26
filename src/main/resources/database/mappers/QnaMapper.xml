@@ -5,23 +5,73 @@
 		    
 		    
 		   <mapper namespace="com.iu.start.home.board.qna.QnaDAO">
+		   
+		   <insert id="setReplyAdd" parameterType="QnaDTO">
+		     <selectKey keyProperty="num" order="BEFORE" resultType="Long">
+		         
+		          SELECT BOARD_SEQ_NEXTNAL FROM DUAL
+		     
+		     </selectKey>
+		     
+		      INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DETH) <!-- REF(INSET할때 NEXTVAL값으로 넣음) -->
+		     VALUES ( #{num},#{title}, #{contents}, #{writer}, SYSDATE, 0, #{ref} ,#{step}, #{depth}) 
 		    
-		    <select id= "getList"  resultType="com.iu.start.home.board.notice.NoticeDTO">
-		         SELECT * FROM QNA ORDER BY NUM DESC;
-					
+		   
+		   </insert>
+		   
+		   <update id="setStepUpdate" parameterType="QnaDTO">
+		   UPDATE QNA SET STEP=STEP+1 WHERE REF=#{ref} AND STEP> #{step};
+		    </update>
 		    
-		    </select> 
+		    <select id="getCount" resultType="Long" parameterType="Pager">
+						SELECT COUNT(num) FROM QNA
+			            	WHERE
+				            	<choose>
+				            		<when test="kind == 'title'">TITLE</when>
+				            		<when test="kind == 'writer'">WRITER</when>
+				            		<otherwise>contents</otherwise>
+				            	</choose> 
+				            LIKE '%'||#{search}||'%'		
+		
+				</select>
 		    
-		    <select id= "getDetail" parameterType="com.iu.start.home.board.impl.BoardDTO"  resultType="com.iu.start.home.board.notice.NoticeDTO">
+		    
+		    <select id="getList" resultType="QnaDTO" parameterType="Pager">
+			SELECT * FROM
+		    (
+		        SELECT ROWNUM R, N.* FROM
+		            (SELECT * FROM QNA 
+		            
+		            	WHERE
+		            		<choose>
+		            			<when test="kind == 'title'">TITLE</when>
+		            			<when test="kind == 'writer'">WRITER</when>
+		            			<otherwise>contents</otherwise>
+		            		</choose> 
+		            		LIKE '%'||#{search}||'%'
+		            
+		            
+		            
+		             ORDER BY NUM DESC) N
+		   					 )
+					WHERE R BETWEEN #{startRow} and #{lastRow}
+			</select>
+		    
+		    <select id= "getDetail" parameterType="com.iu.start.home.board.impl.BoardDTO"  resultType="com.iu.start.home.board.qna.QnaDTO">
 		    SELECT * FROM QNA WHERE NUM= #{num}
 		   
 		    </select>
 		    
 		    
 		    <insert id= "setAdd" parameterType="com.iu.start.home.board.impl.BoardDTO">
+		    <selectKey keyProperty="num" order="BEFORE" resultType="long">
+		                
+		       SELECT BOARD_SEQ.NEXTVAL FROM DUAL
 		    
-		     INSERT INTO QNA VALUES ( BOARD_SQL.NEXTVAL,#{title}, #{contents}, #{writer}, SYSDATE, 0,0,0,0)
-		    
+		    </selectKey>
+		     INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DETH) <!-- REF(INSET할때 NEXTVAL값으로 넣음) -->
+		     VALUES ( #{num},#{title}, #{contents}, #{writer}, SYSDATE, 0,#{num} ,0,0) 
+		    <!-- CURRVAL 단독으로 사용하지 못함 앞에 NEXTVAL이 먼저 사용되고나서 사용가능 -->
 		    
 		    </insert>
 		    

@@ -5,15 +5,95 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>notice list page</title>
+<title> notice list page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
+<br><br>
 
+<!--  검색어 추가  -->
+<div class= "row mb-3">
+
+<form action="./list.aa" class="row row-cols-lg-auto g-3 align-items-center">
+
+
+  <div class="col-12">
+    <label class="visually-hidden" for="kind">kind</label>
+     
+    <select name ="kind" class="form-select" id="kind">
+    <option value="contents">내용</option>
+      <option value="title">제목</option>
+      <option value="writer">작성자</option>
+    
+      
+    </select>
+    
+  </div>
+
+  <div class="col-12">
+    <label class="visually-hidden" for="search">검색어</label>
+    <div class="input-group">
+      <input type="text" name="search" class="form-control" id="search">
+    </div>
+  </div>
+ 
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+</div>
+
+
+<!--  중앙부   -->
+
+<h1 class="align-center">${board} 공지사항</h1>
+<br>
+
+
+
+<section class="container-fluid col-lg-5">
+	<div class="row">
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>	
+	      <th scope="col">TITLE</th>
+	      <th scope="col">WRITER</th>
+	      <th scope="col">DATE</th>
+	      <th scope="col">HIT</th>
+	    </tr>
+	    </thead>
+				<c:forEach items="${list}" var="dto">
+					<tr>
+						<td>${dto.num}</td>
+						<td>
+						<!-- for (int i=begin; i<=end i++ -->
+						<c:catch>
+						<c:forEach begin="1" end="${dto.num}">&ensp;</c:forEach>
+						</c:catch>
+						<td><a href="./detail.aa?num=${dto.num}">${dto.title}</a></td>
+						
+						<td>${dto.writer}</td>
+						<td>${dto.regDate}</td>
+						<td>${dto.hit}</td>
+					</tr>
+				</c:forEach>
+		</table>
+	</div>
+</section>
+
+
+
+<!-- PAGING 처리 -->
 <nav aria-label="Page navigation example">
   <ul class="pagination">
   <c:if test="${pager.pre}">
     <li class="page-item">
-      <a class="page-link" href="./list.aa?page=${pager.startNum-1}" aria-label="Previous">
+      <a class="page-link" href="./list.aa?page=${pager.startNum-1}&kind=${pager.kind}&serach=${pager.search}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
@@ -22,7 +102,7 @@
     
     <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
         
-        <li class="page-item"><a class="page-link" href="./list.aa?page=${i}">${i}</a></li>
+        <li class="page-item"><a class="page-link" href="./list.aa?page=${i}&kind=${pager.kind}&serach=${pager.search}">${i}</a></li>
     
     </c:forEach>
     
@@ -36,12 +116,35 @@
    
     <li class="page-item ${pager.next?'':'disabled'}"><!-- jsp 3항 연산자 -->
     <!--  true라면 ?로 아무이상이 없고 : flase일 경우 disabled를 줌-->
-      <a class="page-link" href="./list.aa?page=${pager.lastNum+1}" aria-label="Next">
+      <a class="page-link" href="./list.aa?page=${pager.lastNum+1}&kind=${pager.kind}&serach=${pager.search}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
   </ul>
 </nav>
+   <br>
+<div >
+<c:choose>
+	<c:when test="${board eq 'Notice'}">
+		<c:if test="${sessionScope.member.userName eq 'Manager'}">
+		<div class="align-center">
+			<a href = "./add.aa"><button class="btn btn-primary">공지 작성</button></a>
+		</div>
+		</c:if>
+	</c:when>	
+	<c:otherwise>
+		<c:if test="${not empty sessionScope.member}">
+		<div class="align-center">
+			<a href = "./add.aa"><button class="btn btn-primary">QnA 작성</button></a>
+		</div>
+		</c:if>
+	</c:otherwise>
+</c:choose>
+</div>
+<br><br>
+<c:import url="../template/footer.jsp"></c:import>
+   
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>

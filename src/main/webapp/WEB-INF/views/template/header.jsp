@@ -15,11 +15,11 @@
 
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                         <a class="nav-link active" href="/bankbook/list.aa">상품리스트</a>
                         <a class="nav-link active" href="/notice/list.aa">공지사항</a>
                         <a class="nav-link active" href="/bankmember/search.aa">회원검색</a>
-                        
+                        <a class="nav-link active" href="/qna/list.aa">Q&A</a>
 						<c:choose>
 						
 						<c:when test="${not empty sessionScope.bankmember}">

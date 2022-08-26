@@ -6,19 +6,35 @@
 		    
 		    <mapper namespace="com.iu.start.home.board.notice.NoticeDAO">
 		    
-		  
-			 <select id= "getCount"  resultType="Long" >
+		    <!--  공통적으로 들어가는  sql문 코드 조각 모으기 -->
+		    <sql id="search">
+		    
+		    WHERE
+				<choose >
+				<when test="kind=='title'">TITLE</when>
+				<when test="kind=='writer'">WRITER</when>
+				<otherwise>CONTENTS</otherwise>
+				</choose>
+				LIKE '%'||#{search}||'%' 
+		    </sql>
+		    
+		    
+		 <!--  검색된 결과의 총갯수 -->
+			 <select id= "getCount"  resultType="Long" parameterType="pager">
 		       
 		        SELECT COUNT (num) FROM NOTICE
+		        <include refid="search"></include>
 		    
 		    </select> 
 		    
 		    
 		    
-		    <select id= "getList"  resultType="com.iu.start.home.board.notice.NoticeDTO" parameterType="Pager">
+		    <select id= "getList" resultType="com.iu.start.home.board.notice.NoticeDTO" parameterType="Pager">
 		         SELECT * FROM
 				(SELECT  ROWNUM R,N.* FROM
-				(SELECT * FROM NOTICE ORDER BY NUM DESC) N)
+				(SELECT * FROM NOTICE
+				<include refid="search"></include>
+				 ORDER BY NUM DESC) N)
 				WHERE R BETWEEN #{startRow} AND #{lastRow}
 					<!--  num이 높은 숫자가 최신글로-->
 		    

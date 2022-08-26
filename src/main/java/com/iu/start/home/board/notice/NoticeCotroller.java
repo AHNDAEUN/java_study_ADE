@@ -29,6 +29,9 @@ public class NoticeCotroller {
 		ModelAndView mv = new ModelAndView();
 		
 	System.out.println(pager.getPage());
+	System.out.println(pager.getKind());
+	System.out.println(pager.getSearch());
+	
 	   
 		System.out.println(pager);
 		
@@ -46,13 +49,13 @@ public class NoticeCotroller {
 	public String getDetail(BoardDTO boardDTO, Model model)throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("boardDTO", boardDTO);
-		return "notice/detail";
+		return "board/detail.aa";
 	}
 	
 	//글작성
 	@RequestMapping(value = "add.aa", method = RequestMethod.GET)
 	public String setAdd()throws Exception{
-		return "notice/add";
+		return "board/add.aa";
 	}
 	
 	@RequestMapping(value = "add.aa", method = RequestMethod.POST)
@@ -71,7 +74,7 @@ public class NoticeCotroller {
 		boardDTO = noticeService.getDetail(boardDTO);
 		
 		mv.addObject("boardDTO", boardDTO);
-		mv.setViewName("notice/update");
+		mv.setViewName("board/update");
 		return mv;
 	}
 	
@@ -83,6 +86,7 @@ public class NoticeCotroller {
 	
 	
 	//글삭제
+	@RequestMapping(value = "delete.aa", method = RequestMethod.POST)
 	public String setDelete(BoardDTO boardDTO)throws Exception{
 		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list.aa";

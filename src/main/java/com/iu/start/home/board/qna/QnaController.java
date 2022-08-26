@@ -1,83 +1,112 @@
 package com.iu.start.home.board.qna;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.home.board.impl.BoardDTO;
 import com.iu.start.home.board.notice.NoticeService;
+import com.iu.start.home.util.Pager;
 
 @Controller
+@RequestMapping("/qna/*")
 public class QnaController {
 	
 	
 	@Autowired
 	private QnaService qnaService;
 	
-	//글목록
-	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView getList()throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<QnaDTO> ar=qnaService.getList();
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "Qna";
+	}
+	
+	@PostMapping("reply.aa")
+	public String setReply(QnaDTO qnaDTO) throws Exception{
+
+		int result = qnaService.setReply(qnaDTO);
+		return "redirect:./list.aa";
+	}
+	
+	
+	@GetMapping("reply.aa")
+	public ModelAndView setReply(BoardDTO boardDTO) throws Exception{
+	
+		ModelAndView mv =new ModelAndView();
+		mv.addObject("boardDTO",boardDTO);
+		mv.setViewName("board/reply");
+		return mv;
 		
+	}
+
+	//글목록
+	@RequestMapping(value = "list.aa", method = RequestMethod.GET)
+	public ModelAndView getList(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<BoardDTO> ar = qnaService.getList(pager);
 		
 		mv.addObject("list", ar);
-		mv.addObject("board", "notice");
 		mv.setViewName("board/list");
 		return mv; 
 	}
 	
 	//글상세
-	@RequestMapping(value="detail",method = RequestMethod.GET)
-	public String getDetail(QnaDTO qnaDTO, Model model)throws Exception{
-		qnaDTO = qnaService.getDetail(qnaDTO);
-		model.addAttribute("qnaDTO", qnaDTO);
-		return "qna/detail";
+	@RequestMapping(value="detail.aa",method = RequestMethod.GET)
+	public String getDetail(BoardDTO boardDTO, Model model)throws Exception{
+		boardDTO = qnaService.getDetail(boardDTO);
+		model.addAttribute("boardDTO", boardDTO);
+		return "board/detail";
 	}
 	
 	//글작성
-	@RequestMapping(value = "add", method = RequestMethod.GET)
+	@RequestMapping(value = "add.aa", method = RequestMethod.GET)
 	public String setAdd()throws Exception{
-		return "qna/add";
+		return "board/add";
 	}
 	
-	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView setAdd(QnaDTO qnaDTO)throws Exception{
+	@RequestMapping(value = "add.aa", method = RequestMethod.POST)
+	public ModelAndView setAdd(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setAdd(qnaDTO);
-		mv.setViewName("redirect:./list");
+		int result = qnaService.setAdd(boardDTO);
+		mv.setViewName("redirect:./list.aa");
 		return mv;
 		
 	}
 	
 	//글수정
-	@RequestMapping(value = "update")
-	public ModelAndView setUpdate(QnaDTO qnaDTO, ModelAndView mv)throws Exception{
-		qnaDTO=qnaService.getDetail(qnaDTO);
+	@RequestMapping(value = "update.aa")
+	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
 		
-		mv.addObject("qnaDTO", qnaDTO);
-		mv.setViewName("qna/update");
+		boardDTO = qnaService.getDetail(boardDTO);
+		
+		mv.addObject("boardDTO", boardDTO);
+		mv.setViewName("board/update");
 		return mv;
 	}
 	
-	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String setUpdate(QnaDTO qnaDTO)throws Exception{
-		
-		int result = qnaService.setUpdate(qnaDTO);
-		return "redirect:./detail?num="+qnaDTO.getNum();
+	@RequestMapping(value = "update.aa", method = RequestMethod.POST)
+	public String setUpdate(BoardDTO boardDTO)throws Exception{
+		int result = qnaService.setUpdate(boardDTO);
+		return "redirect:./detail.aa?num="+boardDTO.getNum();
 	}
 	
 	
 	//글삭제
-	public String setDelete(QnaDTO qnaDTO)throws Exception{
-		int result = qnaService.setUpdate(qnaDTO);
-		return "redirect:./list";
+	public String setDelete(BoardDTO boardDTO)throws Exception{
+		int result = qnaService.setDelete(boardDTO);
+		return "redirect:./list.aa";
 	}
+
+
 	
 
 }
