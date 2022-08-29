@@ -9,6 +9,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BankBookDAO {
 	
+	//수정
+	//등록
+	//판매여부 변경
+	//리스트조회
+	//항목조회
+	
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.start.bankbook.BankBookDAO.";

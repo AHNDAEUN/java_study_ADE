@@ -1,18 +1,65 @@
-/*
- * package com.iu.start.home.bankbookMembers;
- * 
- * import static org.junit.Assert.*;
- * 
- * import java.util.List;
- * 
- * import org.junit.Test;
- * 
- * import com.iu.start.bankmember.BankMemberDAO;
- * 
- * public class bankbookMemberDAOTest extends myAbstractTest {
- * 
- * 
- * 
+package com.iu.start.home.bankbookMembers;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.iu.start.bankmember.BankMemberDTO;
+import com.iu.start.bankmember.BankMemberService;
+import com.iu.start.home.board.MyAbstractTest;
+
+public class bankbookMemberDAOTest extends MyAbstractTest {
+
+	@Autowired
+	private BankMemberService bankMemberService;
+	private BankMemberDTO bankMemberDTO;
+		
+	@Test
+	public void getLoginTest() throws Exception {
+		bankMemberDTO = new BankMemberDTO();
+		bankMemberDTO.setUserName("1234");
+		bankMemberDTO.setPassword("1");
+		bankMemberDTO = bankMemberService.getLogin(bankMemberDTO);
+		assertNull(bankMemberDTO);
+	}
+	
+	@Test
+	public void setJoinTest() throws Exception {
+		bankMemberDTO = new BankMemberDTO();
+		bankMemberDTO.setUserName("56");
+		bankMemberDTO.setPassword("s");
+		bankMemberDTO.setName("s");
+		bankMemberDTO.setEmail("s");
+		bankMemberDTO.setPhone("s");
+		int result =bankMemberService.setJoin(bankMemberDTO);
+		assertEquals(1, result);
+	}
+		
+		@Test
+		public void getSearchById() throws Exception {
+			List<BankMemberDTO> ar = bankMemberService.getSearchById("a");
+			assertEquals(0, ar.size());
+		}
+		
+//		@Test
+//		public void getListTest() throws Exception{
+//			BankMembersDTO bankMembersDTO = new BankMembersDTO();
+//			bankMembersDTO.setUserName("1234");
+//			Map<String, Object> map = bankMemberService.getMyPage(bankMembersDTO);
+//			assertNotEquals(0, map);
+//		}
+
+	
+	
+	
+	
+	
+	
+	
+/*  
  * //만들어진 객체를 주입해주는 @Autowired //<bean> 객체 만들어줌
  * 
  * 
@@ -41,3 +88,4 @@
  * 
  * }
  */
+}

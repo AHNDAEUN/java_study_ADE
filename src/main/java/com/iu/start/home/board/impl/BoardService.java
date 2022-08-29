@@ -2,6 +2,8 @@ package com.iu.start.home.board.impl;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.iu.start.home.util.Pager;
 
 public interface BoardService {
@@ -17,7 +19,7 @@ public interface BoardService {
 		
 		// 글쓰기
 		
-		public int setAdd(BoardDTO boardDTO) throws Exception;
+		public int setAdd(BoardDTO boardDTO,MultipartFile[] files) throws Exception;
 		
 		// 글수정
 		

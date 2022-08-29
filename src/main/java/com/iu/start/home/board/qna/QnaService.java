@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.start.home.board.impl.BoardDTO;
 import com.iu.start.home.board.impl.BoardService;
@@ -14,6 +15,9 @@ public class QnaService implements BoardService {
 	
 	@Autowired
 	private QnaDAO qnaDAO;
+	
+
+	
 	
 	public int setReply(QnaDTO qnaDTO)throws Exception{
 		BoardDTO boardDTO= qnaDAO.getDetail(qnaDTO);
@@ -34,6 +38,18 @@ public class QnaService implements BoardService {
 			Long totalCount=qnaDAO.getCount(pager);
 			pager.getNum(totalCount);
 			pager.getRowNum();
+			
+//			Long totalCount = qnaDAO.getPageCount();
+//			
+//			Long startRow=0L;
+//			Long lastRow=0L;
+//			Long perPage=10L;
+//			lastRow=page*perPage;
+//			startRow=(page-1)*perPage+1;
+//			Map<String, Long> map = new HashMap<String, Long>();
+//			map.put("startRow", startRow);
+//			map.put("lastRow", lastRow);
+			
 			return qnaDAO.getList(pager);
 		}
 
@@ -43,8 +59,6 @@ public class QnaService implements BoardService {
 		return qnaDAO.getDetail(boardDTO);
 	}
 	
-
-	@Override
 	public int setAdd(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("Insert 전 : "+boardDTO.getNum());
@@ -52,6 +66,7 @@ public class QnaService implements BoardService {
 		System.out.println("Insert 후 : "+boardDTO.getNum());
 		return result;
 	}
+	
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
@@ -64,19 +79,16 @@ public class QnaService implements BoardService {
 		// TODO Auto-generated method stub
 		return qnaDAO.setDelete(boardDTO);
 	}
-	
-    public int setStepUpdate(BoardDTO boardDTO) throws Exception {
-		
-		return qnaDAO.setStepUpdate(boardDTO);
-		
+
+	@Override
+	public int setAdd(BoardDTO boardDTO, MultipartFile[] files) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
-	public int setReplyAdd(BoardDTO boardDTO) throws Exception {
-		
-		return qnaDAO.setReplyAdd(boardDTO);
-	}
-		
-	}
+	
+	
+}
 	
 	
 	

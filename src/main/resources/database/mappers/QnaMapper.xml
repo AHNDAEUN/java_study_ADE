@@ -9,18 +9,18 @@
 		   <insert id="setReplyAdd" parameterType="QnaDTO">
 		     <selectKey keyProperty="num" order="BEFORE" resultType="Long">
 		         
-		          SELECT BOARD_SEQ_NEXTNAL FROM DUAL
+		          SELECT BOARD_SQL.NEXTVAL FROM DUAL
 		     
 		     </selectKey>
 		     
 		      INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DETH) <!-- REF(INSET할때 NEXTVAL값으로 넣음) -->
-		     VALUES ( #{num},#{title}, #{contents}, #{writer}, SYSDATE, 0, #{ref} ,#{step}, #{depth}) 
+		     VALUES (#{num},#{title}, #{contents}, #{writer}, SYSDATE, 0, #{ref} ,#{step}, #{depth}) 
 		    
 		   
 		   </insert>
 		   
 		   <update id="setStepUpdate" parameterType="QnaDTO">
-		   UPDATE QNA SET STEP=STEP+1 WHERE REF=#{ref} AND STEP> #{step};
+		   UPDATE QNA SET STEP=STEP+1 WHERE REF=#{ref} AND STEP> #{step}
 		    </update>
 		    
 		    <select id="getCount" resultType="Long" parameterType="Pager">
@@ -57,13 +57,13 @@
 					WHERE R BETWEEN #{startRow} and #{lastRow}
 			</select>
 		    
-		    <select id= "getDetail" parameterType="com.iu.start.home.board.impl.BoardDTO"  resultType="com.iu.start.home.board.qna.QnaDTO">
+		    <select id= "getDetail" parameterType="BoardDTO"  resultType="QnaDTO">
 		    SELECT * FROM QNA WHERE NUM= #{num}
 		   
 		    </select>
 		    
 		    
-		    <insert id= "setAdd" parameterType="com.iu.start.home.board.impl.BoardDTO">
+		    <insert id= "setAdd" parameterType="BoardDTO">
 		    <selectKey keyProperty="num" order="BEFORE" resultType="long">
 		                
 		       SELECT BOARD_SEQ.NEXTVAL FROM DUAL
@@ -75,17 +75,21 @@
 		    
 		    </insert>
 		    
-		    <update id= "setUpdate" parameterType="com.iu.start.home.board.impl.BoardDTO">
+		    <update id= "setUpdate" parameterType="BoardDTO">
 		    
 		    UPDATE QNA SET TITLE = #{title} CONTENTS= #{contents} WHERE NUM = #{num}
 		    
 		    
 		    </update>
-		    <delete id= "setDelete" parameterType="com.iu.start.home.board.impl.BoardDTO">
+		    <delete id= "setDelete" parameterType="BoardDTO">
 		    
 		     DELETE FROM QNA WHERE NUM = #{num}
 		    
 		    </delete>
+		    
+		    <update id="updateHit" parameterType="BoardDTO">
+	    	 	UPDATE QNA SET HIT=HIT+1 WHERE NUM=#{num}
+    	 	</update>
 		    
 		    
 		    </mapper>

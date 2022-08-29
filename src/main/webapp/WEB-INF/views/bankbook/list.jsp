@@ -4,56 +4,56 @@
     pageEncoding="UTF-8"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
-    <%ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>) request.getAttribute("list"); %>
+ <%--  <%ArrayList<BankBookDTO> ar = (ArrayList<BankBookDTO>) request.getAttribute("list"); %> --%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>bankbook list</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<style>
+    .align-center {text-align: center;}
+</style>
 </head>
 <body>
-	<h1>BankBook List</h1>
 	<!-- /bankbook/list -->
 	
 	<!-- /bankbook/detail jsp:detail.jsp  -->
 	<!-- link 주소는 상대경로 작성 -->
-	<table border = "1">
-		<thead>
-		<tr>
-			<th> name </th> <th> rate </th>
-			
-		</tr>
-		
-		</thead>
-		
-		<tbody>
-			
-			<tr>
-				<td>name1</td>
-				<td>0.012</td>
-			</tr>
-			
-			<tr>
-				<td>name2</td>
-				<td>0.133</td>
-			</tr>
-			
-			  <% for (BankBookDTO bankbookDTO : ar) { %>
-			
-			<tr>
-			<td><a href ="./detail.aa?bookNum=<%=bankbookDTO.getBookNum()%>"><%= bankbookDTO.getBookName() %></a> </td>
-			<td><%= bankbookDTO.getBookRate() %></td>
-			</tr>
-			<%} %>
-			
+	<c:import url="../template/header.jsp"></c:import>
+	<br><br>
+	<h1 class="align-center">List Page</h1>
+	<br>
+	<section class="container-fluid col-lg-6">
+		<div class="row">
+		<table class="table">
+		  <thead class="table-dark">
+		    <tr>
+		      <th scope="col">상품 이름</th>
+		      <th scope="col">이자율</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <c:forEach items="${list}" var="dto" >
+				<tr>
+					<td><a href="./detail.aa?bookNum=${dto.bookNum}">${dto.bookName}</a></td>
+					<td>${dto.bookRate}</td>	
+				</tr>
+			</c:forEach>
 				
-		</tbody>
-			
-			
+					
+			</tbody>
+				
+				
+		
+		</table>
+		<a href="./add.aa" class="btn btn-primary">상품등록</a>
+		
+	</div>
+	</section>
 	
-	</table>
-	<a href="./add.aa">상품등록</a>
-	
+	<c:import url="../template/footer.jsp"></c:import>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 	
 
 </body>

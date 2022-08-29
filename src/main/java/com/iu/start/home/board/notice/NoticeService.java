@@ -1,13 +1,22 @@
 package com.iu.start.home.board.notice;
 
+import java.io.File;
+import java.nio.file.FileSystemAlreadyExistsException;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.start.bankmember.BankMemberFileDTO;
 import com.iu.start.home.board.impl.BoardDTO;
+import com.iu.start.home.board.impl.BoardFileDTO;
 import com.iu.start.home.board.impl.BoardService;
 import com.iu.start.home.util.Pager;
 
@@ -16,6 +25,9 @@ public class NoticeService implements BoardService {
 
 	@Autowired
 	private NoticeDAO noticeDAO;
+	
+	@Autowired
+	private ServletContext servletContext;
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -88,9 +100,39 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile[] files) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.setAdd(boardDTO);
+		
+		// 1. 실제 경로
+		String realpath= servletContext.getRealPath("resources/upload/notice");
+		System.out.println(realpath);
+		
+		// 2. 폴더확인
+		File file =new File(realpath);
+		
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		
+		//3. 저장할 파일명을 만드는데 중복되는 않게 만들기
+
+		for(MultipartFile[] mf : files) {
+			if(!mf.isEmpty) {
+				
+				
+				continue;
+			}
+			//저장하는 코드
+			BoardFileDTO boardFileDTO =new BoardFileDTO();
+			membersFileDTO.setFileName(fileName);
+			membersFileDTO.setOriName(photo.getOriginalFilename());
+			membersFileDTO.setUserName(bankMemberDTO.getUserName());
+			bankMemberDAO.setAddFile(membersFileDTO);
+			
+		}
+		
+		
+		 return 0; // noitceDAO.setAdd(boardDTO);
 	}
 
 	@Override

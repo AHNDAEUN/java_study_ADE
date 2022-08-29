@@ -1,4 +1,4 @@
-package com.iu.start.home.board.notice;
+package com.iu.start.home.board;
 
 import static org.junit.Assert.*;
 
@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.iu.start.home.board.impl.BoardDAO;
 import com.iu.start.home.board.impl.BoardDTO;
 import com.iu.start.home.board.notice.NoticeDAO;
+import com.iu.start.home.board.notice.NoticeDTO;
 
 public class NoticeDAO_Test extends MyAbstractTest{
 	
@@ -21,7 +22,7 @@ public class NoticeDAO_Test extends MyAbstractTest{
 	private NoticeDAO noticeDAO;
 
 //	@Test
-//	public void getList() throws Exception{
+//	public void getList(Map) throws Exception{
 //		// 리스트는 얻는게 아니라 가지고 오는 것
 //		List<BoardDTO> ar = noticeDAO.getList();
 //		assertEquals(0, ar.size());
@@ -37,7 +38,7 @@ public class NoticeDAO_Test extends MyAbstractTest{
 //	}
 	
 	@Test
-	public void setAddTest()  throws Exception{
+	public void setAdd()  throws Exception{
 		
 		for(int i= 0; i<100 ; i++){
 		NoticeDTO noticeDTO =new NoticeDTO();
@@ -56,15 +57,33 @@ public class NoticeDAO_Test extends MyAbstractTest{
 		System.out.println("finish!!");
 	
 	}
-			@Test
-			public void getCountTest() throws Exception {
-				
-				long count = noticeDAO.getCount();
-				assertEquals(3, count);
-			
+//			@Test
+//			public void getCountTest() throws Exception {
+//				
+//				long count = noticeDAO.getCount();
+//				assertEquals(3, count);
+
+//	@Test
+//	public void setUpdate() throws Exception {
+//		BoardDTO boardDTO = new BoardDTO();
+//		boardDTO.setNum(16L);
+//		boardDTO.setTitle("test");
+//		boardDTO.setContents("sdafqgw");
+//		boardDTO.setWriter("wggrwqoipw");
+//		int result = noticeDAO.setUpdate(boardDTO);
+//		assertEquals(1, result);
+//	}
+//
+//	@Test
+//	public void setDelete() throws Exception {
+//		BoardDTO boardDTO = new BoardDTO();
+//		boardDTO.setNum(1L);
+//		int result = noticeDAO.setDelete(boardDTO);
+//		assertEquals(1, result);
+//	}
 	
 	
 	
 }
-	}
+	
 

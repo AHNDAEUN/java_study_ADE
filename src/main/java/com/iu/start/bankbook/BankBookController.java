@@ -3,6 +3,8 @@ package com.iu.start.bankbook;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,11 +31,11 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value="detail.aa", method=RequestMethod.GET)
-	public ModelAndView detail(BankBookDTO bankBookDTO) throws Exception {
+	public ModelAndView getDetail(BankBookDTO bankBookDTO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		bankBookDTO = bankBookService.getDetail(bankBookDTO);
-		
+		session.setAttribute("dto", bankBookDTO);
 		mv.setViewName("bankbook/detail");
 		mv.addObject("dto",bankBookDTO);
 		
@@ -46,18 +48,20 @@ public class BankBookController {
 		
 	}
 	
-	@RequestMapping(value="add.aa" ,method=RequestMethod.POST)
+	@RequestMapping(value="add.aa" , method=RequestMethod.POST)
 	public ModelAndView add(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		Calendar ca = Calendar.getInstance();
-		long num = ca.getTimeInMillis();
-		
-		bankBookDTO.setBookNum(num);
-		bankBookDTO.setBookSale(true);
+		System.out.println("add post 실행");
 
-		bankBookService.setBankBook(bankBookDTO);
+		Calendar ca = Calendar.getInstance();
+//		long num = ca.getTimeInMillis();
 		
+		bankBookDTO.setBookNum(ca.getTimeInMillis());
+		int result= bankBookService.setBankBook(bankBookDTO);
+
+		
+		//등록 후 리스트 페이지로 이동
 		mv.setViewName("redirect:./list.aa");
 		
 		return mv;
@@ -79,6 +83,11 @@ public class BankBookController {
 		int result = bankBookService.setUpdate(bankBookDTO);
 		
 		mv.setViewName("redirect:./detail.aa?bookNum="+bankBookDTO.getBookNum());
+
+//		if(result>0) {
+//			System.out.println("성공");
+//			modelAndView.setViewName("redirect:./detail.do?bookNum="+bankBookDTO.getBookNum());
+//		}
 		
 		return mv;
 

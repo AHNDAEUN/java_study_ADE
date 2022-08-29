@@ -1,59 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
 </head>
 <body>
-
+<!-- header import -->
+ 	<c:import url="../template/header.jsp"></c:import>
+ 	
+ 	
 <h1> Join page </h1>
 	<div  class = "container">
 	<h3> 회원가입 </h3>
-	
-	<hr>
-		<form action = "join.aa" method ="POST" >
-		<div>
-		    아이디 입력 <input type="text" name = "userName">
-		    <br>
-		    
-		    비밀번호 입력 <input type="password" name ="password" value="비밀번호(8~32자리)">  
-		     <br>
-		    
-		    비밀번호 확인 <input type="password" value="비밀번호 재입력">
-		    <br>
-		    
-		    이름 입력 <input type="text" name ="name">
-		    <br>
-		    
-		    생년월일 <input type="date">
-		    <br>
-		    
-		    성별 <select>
-		        <OPtion >남</OPtion>
-		        <OPtion >여</OPtion>
-		    </select>
-		    <br>
-		    
-		    이메일 입력<input type = "text" name = "email">
-		    <br>
-		    
-		    전화번호 입력 <input type="text" name = "phone" value="010 - - " >
-		    <br>
-		
-		     주소 입력 <textarea rows="2" cols="30"> </textarea>
-		
-		</div>
-		
-		<div>
-		    <br><br><br>
-		    <a href = "/" > <input type="submit" value="회원가입"> </a>
-		    <a href = "./login.aa" > <button> 취소 </button> </a>
+	  <div class="container-fluid">
+    	<div class="row mt-5 justify-content-center">
+    		<div class="col-lg-6">    		
+    			<h1 class="text-center">Join page</h1>
+    		</div>
+    	</div>
+    
+    	<div class="row justify-content-center mt-5">
+    		<div class="col-lg-6">
+        	<form action="./join.aa" method="post" enctype="multipart/form-data">
+			  <div class="row mb-3">
+			    <label for="inputUserName" class="col-sm-2 col-form-label">ID</label>
+			    <div class="col-sm-10">
+			      <input type="text" name="userName" class="form-control" id="inputUserName" placeholder="ID 입력">
+			    </div>
+			  </div>
+			  <div class="row mb-3">
+			    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+			    <div class="col-sm-10">
+			      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password 입력">
+			    </div>
+			  </div>
+			  <div class="row mb-3">
+			    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+			    <div class="col-sm-10">
+			      <input type="text" name="name" class="form-control" id="inputName" placeholder="이름 입력">
+			    </div>
+			  </div>
+			  
+			  <div class="row mb-3">
+			    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+			    <div class="col-sm-10">
+			      <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email 입력">
+			    </div>
+			  </div>
+			  <div class="row mb-3">
+			    <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
+			    <div class="col-sm-10">
+			      <input type="text" name="phone" class="form-control" id="inputPhone" placeholder="전화번호 입력">
+			    </div>
+			  </div>
+			  
+			  <div class="row mb-3">
+			    <label for="files" class="col-sm-2 col-form-label">Photo</label>
+			    <div class="col-sm-10">
+			      <input type="file" name="photo" class="form-control" id="files" placeholder="전화번호 입력">
+			    </div>
+			  </div>
+			  
+			  
+			  <div class="row justify-content-end">
+			  	<div >
+			  		<button type="submit" class="btn btn-primary mb-3">Sign in</button>
+			  	</div>
+			  </div>
+			</form>
+        	</div>
+        
+        </div>
+    </div>
 		
 		</div>
 		
 		</form>
+	<c:import url="../template/footer.jsp"></c:import>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>    
 
 </body>
 </html>

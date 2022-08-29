@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.home.board.impl.BoardDTO;
@@ -22,6 +24,11 @@ public class NoticeCotroller {
 
 	@Autowired
 	private NoticeService noticeService;
+	
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "Notice";
+	}
 	
 	//글목록
 	@RequestMapping(value = "list.aa", method = RequestMethod.GET)
@@ -49,19 +56,19 @@ public class NoticeCotroller {
 	public String getDetail(BoardDTO boardDTO, Model model)throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("boardDTO", boardDTO);
-		return "board/detail.aa";
+		return "board/detail";
 	}
 	
 	//글작성
 	@RequestMapping(value = "add.aa", method = RequestMethod.GET)
 	public String setAdd()throws Exception{
-		return "board/add.aa";
+		return "board/add";
 	}
 	
 	@RequestMapping(value = "add.aa", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO)throws Exception{
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setAdd(boardDTO);
+		int result = noticeService.setAdd(boardDTO,files);
 		mv.setViewName("redirect:./list.aa");
 		return mv;
 		
