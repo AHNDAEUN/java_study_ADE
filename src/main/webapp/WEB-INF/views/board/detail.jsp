@@ -38,6 +38,15 @@
 			</div>
 		</div>
 		
+		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
+			<div class="col">
+				<c:forEach items="${boradDTO.boardFileDTOs}" var="fileDTO"></c:forEach>
+				<p>
+				<a href= "../resources/upload/${board}/${fileDTO.fileName}">${fileDTO.oriName}</a>
+				</p>
+			</div>
+		</div>
+		
 		<div class="row">
 			<a href="./reply.aa?num=${boardDTO.num}" class="btn btn-danger">Reply</a>
 		</div>

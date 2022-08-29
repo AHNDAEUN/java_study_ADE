@@ -40,16 +40,37 @@
 		    
 		    </select> 
 		    
-		    <select id= "getDetail" parameterType="com.iu.start.home.board.impl.BoardDTO"  resultType="com.iu.start.home.board.notice.NoticeDTO">
-		    SELECT * FROM NOTICE WHERE NUM= #{num}
+		    <select id= "getDetail" parameterType="com.iu.start.home.board.impl.BoardDTO"  resultMap="getDetailResult">
+		    SELECT N.*,NF.*
+		     FROM NOTICE N
+		     LEFT JOIN
+		     NOTICEFILE NF
+		     ON N.NUM=MF.NUM
+		     WHERE N.NUM= #{num}
 		   
 		    </select>
-		    
+		   
+		   <resultMap type="NoticeDTO" id="getDetailResult">
+		   <id column="num" property="num"/>
+		   <result column="TITLE" property="title"/>
+		   <result column="WRITER" property="wrtier"/>
+		   <result column="CONTENTS" property="contents"/>
+		   <result column="REGDATE" property="redate"/>
+		   <result column="HIT" property="hit"/>
+		   <collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+		    <id column="FILENUM" property="fileNum"/>
+		    <result column="FILENAME" property="fileName"/>
+		    <result column="ORINAME" property="oriName"/>
+		    </collection>
+		   </resultMap> 
 		    
 		    <insert id= "setAdd" parameterType="com.iu.start.home.board.impl.BoardDTO">
 		    
-		     INSERT INTO NOTICE VALUES ( BOARD_SQL.NEXTVAL,#{title}, #{contents}, #{writer}, SYSDATE, 0)
-		    
+			<selectKey order="BEFORE" keyProperty="num" resultType="Long">
+				SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+			</selectKey>
+				INSERT INTO NOTICE (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT)
+				VALUES (#{num}, #{title}, #{writer}, #{contents}, sysdate, 0)		    
 		    
 		    </insert>
 		    

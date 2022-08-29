@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.swing.TransferHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class BankMemberService {
 		return bankMemberDAO.getLogin(bankMemberDTO); 
 	} 
 		
-	public int setJoin(BankMemberDTO  bankMemberDTO, MultipartFile photo) throws Exception {
+	public int setJoin(BankMemberDTO  bankMemberDTO, MultipartFile photo, ServletContext servletContext) throws Exception {
 	 int result=bankMemberDAO.setJoin(bankMemberDTO);
 		//1. HDD에 파일을 저장
 		//- 파일 저장 시 파일의 경로는 TOMCAT기준이 아닌 운영체제의 기준으로 설정

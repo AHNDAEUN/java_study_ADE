@@ -3,6 +3,7 @@ package com.iu.start.bankmember;
 import java.util.List;
 
 import javax.print.DocFlavor.STRING;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,15 +65,14 @@ public class BankMemberController {
 	
 	
 	@RequestMapping(value= "join.aa", method = RequestMethod.POST)
-	public String join(BankMemberDTO bankMemberDTO, MultipartFile photo) throws Exception{
+	public String join(BankMemberDTO bankMemberDTO, MultipartFile photo,HttpSession session) throws Exception{
 		
 		System.out.println(" join Post 실행");
 		System.out.println(photo);
 		System.out.println("업로드 시 파일명:"+photo.getOriginalFilename());
 		System.out.println("업로드 시 파라미터명:"+photo.getName()); //photo가 들어와
 		System.out.println("업로드하는 파일의 크기:"+photo.getSize());
-		int result= bankMemberService.setJoin(bankMemberDTO,photo);
-		
+		int result= bankMemberService.setJoin(bankMemberDTO,photo, session.getServletContext());
 		
 		return "redirect:./login.aa";
 	}

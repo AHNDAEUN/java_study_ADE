@@ -3,10 +3,12 @@ package com.iu.start.home.board.notice;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +29,7 @@ public class NoticeCotroller {
 	
 	@ModelAttribute("board")
 	public String getBoard() {
-		return "Notice";
+		return "notice";
 	}
 	
 	//글목록
@@ -66,9 +68,9 @@ public class NoticeCotroller {
 	}
 	
 	@RequestMapping(value = "add.aa", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files)throws Exception{
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile[] files,HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setAdd(boardDTO,files);
+		int result = noticeService.setAdd(boardDTO,files, session.getServletContext());
 		mv.setViewName("redirect:./list.aa");
 		return mv;
 		

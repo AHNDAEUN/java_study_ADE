@@ -6,7 +6,7 @@
          <mapper namespace="com.iu.start.bankbook.BankBookDAO">
          	<!--bankbook 등록 -->
          	<insert id="setBankBook" parameterType="BankBookDTO">
-         		INSERT INTO BANKBOOK VALUES (#{bookNum},#{bookName},#{bookRate},#{bookSale})
+         		INSERT INTO BANKBOOK VALUES (#{bookNum},#{bookName},#{bookRate},1)
          	</insert>
          	
          	<!-- bankbook list -->

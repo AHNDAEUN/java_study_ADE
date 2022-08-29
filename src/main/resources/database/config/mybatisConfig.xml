@@ -11,8 +11,11 @@
 								<typeAlias type="com.iu.start.bankbook.BankBookDTO" alias="BankBookDTO"/>
 								<typeAlias type="com.iu.start.home.board.impl.BoardDTO" alias="BoardDTO"/>
 								<typeAlias type="com.iu.start.home.board.notice.NoticeDTO" alias="NoticeDTO"/>
+								<typeAlias type="com.iu.start.home.board.notice.NoticeDAO" alias="NoticeDAO"/>
+								
 								<typeAlias type="com.iu.start.home.board.qna.QnaDTO" alias="QnaDTO"/>
 								<typeAlias type="com.iu.start.bankmember.BankMemberFileDTO" alias="BankMemberFileDTO"/>
+								<typeAlias type="com.iu.start.home.board.impl.BoardFileDTO" alias="BoardFileDTO"/>
 								
 								<typeAlias type="com.iu.start.home.util.Pager" alias="Pager"/>
 								

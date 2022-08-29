@@ -7,6 +7,8 @@ import com.iu.start.home.util.Pager;
 
 public interface BoardDAO {
 	
+	//file 추가
+	public Long setAddFile(BoardDTO BoardDTO) throws Exception;
 	
 	//글의 총갯수
 	

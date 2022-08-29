@@ -3,14 +3,18 @@ package com.iu.start.home.board.qna;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.start.home.board.impl.BoardDTO;
@@ -27,7 +31,7 @@ public class QnaController {
 	
 	@ModelAttribute("board")
 	public String getBoard() {
-		return "Qna";
+		return "qna";
 	}
 	
 	@PostMapping("reply.aa")
@@ -74,9 +78,9 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "add.aa", method = RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO)throws Exception{
+	public ModelAndView setAdd(BoardDTO boardDTO,MultipartFile[] files, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setAdd(boardDTO);
+		int result = qnaService.setAdd(boardDTO, files, session.getServletContext());
 		mv.setViewName("redirect:./list.aa");
 		return mv;
 		

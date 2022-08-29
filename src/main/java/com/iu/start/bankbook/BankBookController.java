@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 @Controller
 @RequestMapping(value="/bankbook/*")
@@ -43,23 +44,24 @@ public class BankBookController {
 	}
 	
 	@RequestMapping(value="add.aa", method=RequestMethod.GET)
-	public void add() throws Exception{
+	public void add(BankBookDTO bankBookDTO, ModelAndView mv) throws Exception{
 		System.out.println("상품 등록 실행 GET");
 		
+		Calendar ca = Calendar.getInstance();
+//		long num = ca.getTimeInMillis();
+		
+		bankBookDTO = new BankBookDTO();
+		bankBookDTO.setBookNum(ca.getTimeInMillis());
+		mv.addObject("add", bankBookDTO);
+
 	}
 	
-	@RequestMapping(value="add.aa" , method=RequestMethod.POST)
+	@RequestMapping(value="add.aa", method=RequestMethod.POST)
 	public ModelAndView add(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("add post 실행");
-
-		Calendar ca = Calendar.getInstance();
-//		long num = ca.getTimeInMillis();
-		
-		bankBookDTO.setBookNum(ca.getTimeInMillis());
 		int result= bankBookService.setBankBook(bankBookDTO);
-
 		
 		//등록 후 리스트 페이지로 이동
 		mv.setViewName("redirect:./list.aa");

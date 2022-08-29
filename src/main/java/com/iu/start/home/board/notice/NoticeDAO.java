@@ -59,6 +59,11 @@ public class NoticeDAO implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NAMESPACE+"setDelete",boardDTO);
 	}
+	@Override
+	public Long setAddFile(BoardDTO BoardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 
