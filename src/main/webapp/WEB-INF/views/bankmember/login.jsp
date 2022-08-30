@@ -21,7 +21,7 @@
 <c:import url="../template/header.jsp"></c:import>
 
 
-	<form action ="login.aa" method= "POST"> 
+	<form action ="login.aa" method= "POST" id="login"> 
 	
 <section class= "container-fluid col-lg-4 mt-5 min-vh-100">
 
@@ -31,14 +31,14 @@
 
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="text" name="userName" value="usr2" id="form2Example1" class="form-control" />
-    <label class="form-label" for="form2Example1">Email address</label>
+    <input type="text" name="userName" value="usr2" id="id" class="form-control" />
+    <label class="form-label" for="id">Email address</label>
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <input type="password" name="password" value="pw2" id="form2Example2" class="form-control" />
-    <label class="form-label" for="form2Example2">Password</label>
+    <input type="password" name="password" value="pw2" id="pw" class="form-control" />
+    <label class="form-label" for="pw">Password</label>
   </div>
 
   <!-- 2 column grid layout for inline styling -->
@@ -58,7 +58,7 @@
   </div>
 
   <!-- Submit button -->
-  <a href="/"><button type="submit" class="btn btn-primary wrapper "> 로그인 </button> </a>
+  <a href="/"><button type="submit" class="btn btn-primary wrapper " id="btn"> 로그인 </button> </a>
 
   <!-- Register buttons -->
   <div class="text-center">
@@ -96,6 +96,6 @@
 
 		<c:import url="../template/footer.jsp"></c:import>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
+<script src="/resources/js/member.js"></script>
 </body>
 </html>

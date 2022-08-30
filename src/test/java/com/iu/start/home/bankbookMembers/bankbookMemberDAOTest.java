@@ -34,7 +34,7 @@ public class bankbookMemberDAOTest extends MyAbstractTest {
 		bankMemberDTO.setName("s");
 		bankMemberDTO.setEmail("s");
 		bankMemberDTO.setPhone("s");
-		int result =bankMemberService.setJoin(bankMemberDTO);
+		int result =bankMemberService.setJoin(bankMemberDTO, null, null);
 		assertEquals(1, result);
 	}
 		
