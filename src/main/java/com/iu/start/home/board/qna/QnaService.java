@@ -24,16 +24,15 @@ public class QnaService implements BoardService {
 	
 	public int setReply(QnaDTO qnaDTO)throws Exception{
 		BoardDTO boardDTO= qnaDAO.getDetail(qnaDTO);
+		System.out.println(boardDTO.getNum());
 		QnaDTO parent =(QnaDTO)boardDTO;
-		
-		qnaDTO.setRef(parent.getRef());
-		qnaDTO.setRef(parent.getStep()+1);
-		qnaDTO.setRef(parent.getDepth()+1);
-		
+		qnaDTO.setRef(parent.getRef());  
+		qnaDTO.setStep(parent.getStep()+1);
+		qnaDTO.setDepth(parent.getDepth()+1);
 		qnaDAO.setStepUpdate(parent);
 		int result = qnaDAO.setReplyAdd(qnaDTO);
 		
-		return 0;
+		return result;
 	}
 		
 		@Override

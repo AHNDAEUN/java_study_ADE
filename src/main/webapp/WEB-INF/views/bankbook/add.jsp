@@ -18,7 +18,7 @@
 
 <c:import url="../template/header.jsp"></c:import>
 
-	<form action="add.aa" method = "POST">
+	<form action="add.aa" method = "POST" enctype="multipart/form-data">
 <section class="container-fluid col-lg-4">
 	<div class="row">
 	<table class="table table-bordered border-primary">

@@ -9,12 +9,12 @@
 		   <insert id="setReplyAdd" parameterType="QnaDTO">
 		     <selectKey keyProperty="num" order="BEFORE" resultType="Long">
 		         
-		          SELECT BOARD_SQL.NEXTVAL FROM DUAL
+		          SELECT BOARD_SEQ.NEXTVAL FROM DUAL
 		     
 		     </selectKey>
 		     
-		      INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DETH) <!-- REF(INSET할때 NEXTVAL값으로 넣음) -->
-		     VALUES (#{num},#{title}, #{contents}, #{writer}, SYSDATE, 0, #{ref} ,#{step}, #{depth}) 
+		      INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DEPTH) <!-- REF(INSET할때 NEXTVAL값으로 넣음) -->
+		     VALUES (#{num},#{title}, #{writer}, #{contents}, SYSDATE, 0, #{ref} ,#{step}, #{depth}) 
 		    
 		   
 		   </insert>
@@ -69,7 +69,7 @@
 		       SELECT BOARD_SEQ.NEXTVAL FROM DUAL
 		    
 		    </selectKey>
-		     INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DETH) <!-- REF(INSET할때 NEXTVAL값으로 넣음) -->
+		     INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DEPTH) <!-- REF(INSET할때 NEXTVAL값으로 넣음) -->
 		     VALUES ( #{num},#{title}, #{contents}, #{writer}, SYSDATE, 0,#{num} ,0,0) 
 		    <!-- CURRVAL 단독으로 사용하지 못함 앞에 NEXTVAL이 먼저 사용되고나서 사용가능 -->
 		    

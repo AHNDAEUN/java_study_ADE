@@ -34,7 +34,7 @@
 			</div>
 			
 			<div class="mb-3">
-				<button class="btn btn-success">WRITE</button>
+				<button class="btn btn-success">WRITER</button>
 			</div>
 			
 		</form>

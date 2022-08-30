@@ -5,6 +5,7 @@
 <html>
 <head>
 	<title>Home</title>
+	
 </head>
 <body>
 <h1>
@@ -27,7 +28,7 @@
 상품 추가<a href="./bankbook/add.aa "> add </a>
 id 검색<a href="./bankmember/search.aa "> member search </a>
 통장 정보<a href="./bankbook/list.aa "> member list </a>
-</body>
-</html>
+
+
 </body>
 </html>

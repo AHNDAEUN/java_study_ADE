@@ -16,7 +16,7 @@
 		    
 		    <select id="getMyPage" parameterType="BankMemberDTO" resultMap="getMyPageResult">
 		    
-		   SELECT BM.USERNAME, NAME, EMAIL, PHONE,FILENUM, FILENAME, ACCOUNTNUM, BOOKNAME,ACCOUNTDATE 
+		   SELECT BM.USERNAME, NAME, EMAIL, PHONE, FILENUM, FILENAME, ACCOUNTNUM, BOOKNAME, ACCOUNTDATE 
 		    FROM BANKMEMBERS BM
 		    LEFT JOIN 
 		    MEMBERFILE MF
@@ -30,6 +30,7 @@
 		    BANKBOOK BB
 		   ON BA.BOOKNUM=BB.BOOKNUM
 		    WHERE BM.USERNAME= #{userName}
+		    ORDER BY BA.ACCOUNTNUM DESC
 		    </select>
 		    
 		    <resultMap type="BankMemberDTO" id="getMyPageResult">

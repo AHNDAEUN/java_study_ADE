@@ -28,7 +28,7 @@
 	    </tr>
 	    <tr>
 	      <th scope="col">WRITER</th>
-			<td><input type="text" name="writer" readonly value="${sessionScope.member.userName}"></td>
+			<td><input type="text" name="writer" readonly value="${sessionScope.bankmember.userName}"></td>
 	    </tr>
 	  </thead>
 	  <tbody>
