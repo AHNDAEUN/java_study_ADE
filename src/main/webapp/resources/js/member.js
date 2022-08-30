@@ -2,7 +2,7 @@ const btn= document.getElementById("btn");
 const login= document.getElementById("login");
 
 btn.addEventListener("click", function(){
-    console.login("submit button click");
+    console.log("submit button click");
     login.submit();
 }); 
 
@@ -38,7 +38,7 @@ const pw = document.getElementById("pw");
    }
 
 //    if(p.length>0 && p.length>0 ){
-//         login.submit();
+//       login.submit();
 //    }else{
 //         alert("id와 pw는 필수 입니다.");
 //    }

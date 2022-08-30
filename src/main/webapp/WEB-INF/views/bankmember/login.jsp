@@ -58,7 +58,7 @@
   </div>
 
   <!-- Submit button -->
-  <a href="/"><button type="submit" class="btn btn-primary wrapper " id="btn"> 로그인 </button> </a>
+  <button type="button" class="btn btn-primary wrapper " id="btn"> 로그인 </button>
 
   <!-- Register buttons -->
   <div class="text-center">

@@ -22,7 +22,7 @@
                         <a class="nav-link active" href="/qna/list.aa">Q&A</a>
 						<c:choose>
 						
-						<c:when test="${not empty sessionScope.bankmember}">
+						<c:when test="${not empty sessionScope.member}">
                         <a class="nav-link active" href="/bankmember/logout.aa">로그아웃</a>
                         <a class="nav-link active" href="/bankmember/mypage.aa">마이페이지</a>
 						</c:when>

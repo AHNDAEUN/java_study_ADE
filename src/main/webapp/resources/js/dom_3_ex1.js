@@ -45,3 +45,43 @@ btn3.addEventListener("click",function(){// btn3을 클릭시 btn2을 강제발�
 btn2.click();
 
 });
+
+
+
+//----------------------------
+
+const select = document.getElementById("select");
+
+btn.addEventListener("click",function(){
+
+    console.log("operator: "+select.value);
+    let result=0;
+    if(select.value=="+"){
+        result= d1.value*1+d2.value*1;
+    }else if(select.value=="-"){
+        result= d1.value*1-d2.value*1;
+    }else if(select.value=="*"){
+        result= d1.value*1*d2.value*1;
+
+    }else if(select.value=="/"){
+        result= d1.value*1/d2.value*1;
+
+    }else{
+        result= d1.value*1 % d2.value*1;
+
+    }
+});
+
+//-----------------------------
+const btn4 =document.getElementById("btn4");
+const c1= document.getElementsByClassName("c1");
+
+btn4.addEventListener("click", function(){
+
+    alert(c1);
+   console.log(c1); 
+   for(let i=0; i<c1.length; i++){
+    console.log(c1[1].value); // 옵션태그 1를 가져옴 ,그중에서 value값을 가져옴
+
+   }
+});

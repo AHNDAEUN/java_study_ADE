@@ -37,7 +37,7 @@ public class BankMemberController {
 		bankMemberDTO = bankMemberService.getLogin(bankMemberDTO);
 		System.out.println(bankMemberDTO);
 		
-		session.setAttribute("bankmember", bankMemberDTO);
+		session.setAttribute("member", bankMemberDTO);
 		
 		// "redirect:다시접속할URL주소(절대경로,상대경로)"
 		return "redirect:../";
@@ -104,6 +104,7 @@ public class BankMemberController {
 	public ModelAndView myPage(HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BankMemberDTO bankMemberDTO = (BankMemberDTO)session.getAttribute("member");
+		System.out.println(bankMemberDTO.getUserName());
 //		Map<String, Object> map = new HashMap<String, Object>();
 //		map = bankMemberService.getMyPage(bankMembersDTO);
 //		

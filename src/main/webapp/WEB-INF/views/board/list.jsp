@@ -23,9 +23,9 @@
     <label class="visually-hidden" for="kind">kind</label>
      
     <select name ="kind" class="form-select" id="kind">
-    <option value="contents">내용</option>
-      <option value="title">제목</option>
-      <option value="writer">작성자</option>
+    <option class="kinds" value="contents">내용</option>
+      <option class="kinds" value="title">제목</option>
+      <option class="kinds" value="writer">작성자</option>
     
       
     </select>
@@ -35,13 +35,13 @@
   <div class="col-12">
     <label class="visually-hidden" for="search">검색어</label>
     <div class="input-group">
-      <input type="text" name="search" class="form-control" id="search">
+      <input type="text" name="search" value ="${param.serach}" class="form-control" id="search">
     </div>
   </div>
  
 
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
   </div>
 </form>
 
@@ -131,6 +131,19 @@
 <c:import url="../template/footer.jsp"></c:import>
    
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="/resources/js/board.js"></script>
 
-</body>
+<script>
+  let k ='${param.kind}';// 검색했던 컨텐츠,타이틀,,등
+const kinds =document.getElementsByClassName("kinds");
+for(let i=0; i<kinds.length;i++){
+  if(kind[i].value==k){
+    kinds[i].ariaSelected=true;
+    break;
+  }
+}
+
+</script>
+
+</body> 
 </html>
