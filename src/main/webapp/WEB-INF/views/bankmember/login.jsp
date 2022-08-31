@@ -81,13 +81,8 @@
     </button>
   </div>
   
-  
-
-	
-	
 	
 	</div>
-
 
 
 </section>

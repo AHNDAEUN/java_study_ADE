@@ -59,8 +59,6 @@ function check(){
 
         if()
 
-
-
         
         // if(all.checked){
 

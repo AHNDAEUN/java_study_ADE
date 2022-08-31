@@ -27,50 +27,79 @@
     
     	<div class="row justify-content-center mt-5">
     		<div class="col-lg-6">
-        	<form action="./join.aa" method="post" enctype="multipart/form-data">
-			  <div class="row mb-3">
+
+				
+        	<form action="./join.aa" method="post"  id = "joinform" enctype="multipart/form-data">
+			
+				<!-- id -->
+				<div class="row mb-3">
 			    <label for="inputUserName" class="col-sm-2 col-form-label">ID</label>
 			    <div class="col-sm-10">
-			      <input type="text" name="userName" class="form-control" id="inputUserName" placeholder="ID 입력">
-			    </div>
+			      <input type="text" name="userName" class="form-control" id="d1" placeholder="ID 입력">
+			    <div id="d1result"></div>
+				</div>
 			  </div>
+
+			  <!-- 비밀번호 -->
 			  <div class="row mb-3">
 			    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 			    <div class="col-sm-10">
-			      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password 입력">
-			    </div>
+			      <input type="password" name="password" class="form-control" id="pw1" placeholder="Password 입력">
+				  <div></div>
+
+				</div>
 			  </div>
+			  <!-- 확인용 비밀번호 -->
+			  <div class="row mb-3">
+			    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+			    <div class="col-sm-10">
+			      <input type="password" name="password" class="form-control" id="pw2" placeholder="Password 입력">
+				  <div></div>
+				</div>
+			  </div>
+
+			  <!-- 이름 -->
 			  <div class="row mb-3">
 			    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
 			    <div class="col-sm-10">
-			      <input type="text" name="name" class="form-control" id="inputName" placeholder="이름 입력">
-			    </div>
+			      <input type="text" name="name" class="form-control" id="name" placeholder="이름 입력">
+				  <div></div>
+
+				</div>
 			  </div>
 			  
+			  <!-- 이메일 -->
 			  <div class="row mb-3">
 			    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 			    <div class="col-sm-10">
-			      <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email 입력">
-			    </div>
+			      <input type="email" name="email" class="form-control" id="email" placeholder="Email 입력">
+				  <div></div>
+
+				</div>
 			  </div>
+
+			  <!-- 전화번호 -->
 			  <div class="row mb-3">
 			    <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
 			    <div class="col-sm-10">
-			      <input type="text" name="phone" class="form-control" id="inputPhone" placeholder="전화번호 입력">
-			    </div>
+			      <input type="text" name="phone" class="form-control" id="num" placeholder="전화번호 입력">
+				  <div></div>
+
+				</div>
 			  </div>
 			  
+			  <!-- 파일첨부 -->
 			  <div class="row mb-3">
 			    <label for="files" class="col-sm-2 col-form-label">Photo</label>
 			    <div class="col-sm-10">
-			      <input type="file" name="photo" class="form-control" id="files" placeholder="전화번호 입력">
+			      <input type="file" name="photo" class="form-control" id="files" >
 			    </div>
 			  </div>
 			  
 			  
 			  <div class="row justify-content-end">
 			  	<div >
-			  		<button type="submit" class="btn btn-primary mb-3">Sign in</button>
+			  		<button type="submit" class="btn btn-primary mb-3" id="joinbtn">Sign in</button>
 			  	</div>
 			  </div>
 			</form>
@@ -82,8 +111,12 @@
 		</div>
 		
 		</form>
+
+
+	
 	<c:import url="../template/footer.jsp"></c:import>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>    
+<script src="/resources/js/member2.js"></script>
 
 </body>
 </html>

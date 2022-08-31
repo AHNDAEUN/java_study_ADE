@@ -12,6 +12,7 @@ d2.addEventListener("focus",function(){
 
 d2.addEventListener("blur", function(){
 
+
     console.log("blur 발생");
 })
 
@@ -39,18 +40,18 @@ d5.addEventListener("change", function(){
     console.log("SELECT 변경");
 })
 
-function keyup(){
-d4.addEventListener("keyup",function(){
+// function keyup(){
+// d4.addEventListener("keyup",function(){
 
-    console.log("keyup 실행");
-    let result =0;
-    let c = d4.value;
+//     console.log("keyup 실행");
+//     let result =0;
+//     let c = d4.value;
 
-    if(c.length==1){
-      result= d4*1000;
+//     if(c){
+//       result= d4*1000;
 
-      return result;
-    } 
-});
+//       return result;
+//     } 
+// });
 
-}
+//}
