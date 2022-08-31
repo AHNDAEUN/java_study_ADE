@@ -1,3 +1,4 @@
+function loginckeck(){
 const btn= document.getElementById("btn");
 const login= document.getElementById("login");
 
@@ -42,4 +43,57 @@ const pw = document.getElementById("pw");
 //    }else{
 //         alert("id와 pw는 필수 입니다.");
 //    }
+// login.submit();
 });
+}
+
+function check(){
+
+    const all =document.getElementById("all");
+    const cb =document.getElementsByClassName("cb");
+    const join =document.getElementById("join");
+    const frm =document.getElementById("frm");
+    const req =document.getElementById("req");
+
+    join .addEventListener("click",function(){
+
+        if()
+
+
+
+        
+        // if(all.checked){
+
+        //     frm.submit(); //전체동의 필수인 경우
+
+        // }else{
+        //     alert("약관 동의해주세요!!");
+        // }
+    })
+
+
+all.addEventListener("click",function(){
+
+    for(let i=0; i<cb.length; i++){
+        cb[i].checked =all.checked;
+    }
+});
+
+
+for(let i=0; i<cb.length;i++){
+
+    cb[i].addEventListener("click",function(){
+        let result=true;
+        for(let j=0; j<cb.length;i++){
+
+            if(!cb[j].checked){
+
+                result =false;
+                break;
+            }
+
+        }
+        all.checked=result;
+    })
+}
+}

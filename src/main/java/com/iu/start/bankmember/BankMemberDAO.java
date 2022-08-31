@@ -43,5 +43,6 @@ public class BankMemberDAO implements MemberDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"getMyPage", bankMemberDTO);
 	} 
+	
 
 }

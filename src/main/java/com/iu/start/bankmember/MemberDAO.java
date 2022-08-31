@@ -12,5 +12,4 @@ public BankMemberDTO getLogin(BankMemberDTO bankmemberDTO) throws Exception;
 	
 	
 	public BankMemberDTO getMyPage(BankMemberDTO bankmemberDTO) throws Exception;
-
 }
