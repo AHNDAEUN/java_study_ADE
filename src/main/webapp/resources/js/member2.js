@@ -45,66 +45,6 @@ d1.addEventListener("blur", function(){
     }
 })
 
-d1.addEventListener("blur", function(){
+//pw길이 //
 
-    console.log("blur 실행");
-
-
-let d= d1.value;
-if(d.length<2){
-    console.log("ID는 2글자 이상이어야 합니다.");
-    d1.focus();
-   
-}
-
-})
-
-pw1.addEventListener("blur",function(){
-
-let p=pw1.value;
-
-if(p.length<=6){
-    alert("비밀번호는 최소 6글자 이상이어야 합니다.");
-    pw1.focus();
-
-}
-
-});
-
-pw2.addEventListener("blur",function(){
-
-    if(pw1==pw2){
-
-        alert("비밀번호가 일치합니다.");
-    }else{
-
-        alert("비밀번호가 일치하지 않습니다. 확인해주세요");
-    }
-});
-
-name.addEventListener("blur",function(){
-    let n=name.value;
-    if(n.length<=1){
-        
-        name.focus();
-        alert("이름 입력은 최소 1글자 이상이어야 합니다.");  
-    }
-})
-
-email.addEventListener("blur",function(){
-    let e=email.value;
-    if(n.length<=1){
-        
-        email.focus();
-        alert(" 메일 형식으로 다시 입력해주십시오. ");  
-    }
-})
-
-num.addEventListener("blur",function(){
-    let m=num.value;
-    if(n.length<=1){
-        
-        num.focus();
-        alert("전화번호 입력은 최소 1글자 이상이어야 합니다.");  
-    }
-})
+p
