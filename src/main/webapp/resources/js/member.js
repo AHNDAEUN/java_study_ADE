@@ -55,7 +55,7 @@ function check(){
     const frm =document.getElementById("frm");
     const req =document.getElementById("req");
 
-    join .addEventListener("click",function(){
+    join.addEventListener("click",function(){
         
      if(all.checked){
 

@@ -5,8 +5,21 @@
 const addFiles = document.getElementById("addFiles");
 const add = document.getElementById("add");
 
+let count =0;
+
 
 add.addEventListener("click", function(){
+      
+   count++;
+  
+   if(count>5){
+
+      alert("최대 5개만 가능")
+
+      return;
+   }
+   
+  
 //     <label for="files" class="form-label">File</label>
 //     <input type="file" name="files" class="form-control" id="files">
 //   </div>
