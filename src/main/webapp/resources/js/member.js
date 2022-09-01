@@ -57,7 +57,7 @@ function check(){
 
     join .addEventListener("click",function(){
 
-        if()
+    
 
         
         // if(all.checked){
