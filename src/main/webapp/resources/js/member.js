@@ -56,17 +56,14 @@ function check(){
     const req =document.getElementById("req");
 
     join .addEventListener("click",function(){
-
-        if()
-
         
-        // if(all.checked){
+     if(all.checked){
 
-        //     frm.submit(); //전체동의 필수인 경우
+         frm.submit(); //전체동의 필수인 경우
 
-        // }else{
-        //     alert("약관 동의해주세요!!");
-        // }
+         }else{
+          alert("약관 동의해주세요!!");
+         }
     })
 
 

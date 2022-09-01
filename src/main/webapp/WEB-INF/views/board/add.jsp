@@ -44,7 +44,7 @@
 			
 			<div id="addFiles">
 
-				<button type="button"> 파일 추가 </button>
+				<button type="button" id="add"> 파일 추가 </button>
 			</div>
 			
 			
@@ -80,5 +80,6 @@
  <script type="text/javascript">
  $("#contents").summernote();
  </script>
+ <script src="/resources/js/board_add.js"></script>
 <!-- bootstrap -->
 </html>
