@@ -42,15 +42,9 @@
 			  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
 			</div>
 			
-			
-			<label for="file" class="form-label">Title</label>
-			  <input type="file" name="files" class="form-control" id="files">
-			</div>
-			<label for="file" class="form-label">Title</label>
-			  <input type="file" name="files" class="form-control" id="files" >
-			</div>
-			<label for="file" class="form-label">Title</label>
-			  <input type="file" name="files" class="form-control" id="files" >
+			<div id="addFiles">
+
+				<button type="button"> 파일 추가 </button>
 			</div>
 			
 			
