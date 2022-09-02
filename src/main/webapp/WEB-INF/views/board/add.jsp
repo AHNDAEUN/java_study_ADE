@@ -53,15 +53,15 @@
 				<button class="btn btn-success">WRITE</button>
 			</div>
 			<c:choose>
-	<c:when test="${board eq 'Notice'}">
-		<c:if test="${sessionScope.member.userName eq 'Manager'}">
+	<c:when test="${board eq 'notice'}">
+		<c:if test="${sessionScope.bankmember.userName eq 'manager'}">
 		<div class="align-center">
 			<a href = "./add.aa"><button class="btn btn-primary">공지 등록</button></a>
 		</div>
 		</c:if>
 	</c:when>	
 	<c:otherwise>
-		<c:if test="${not empty sessionScope.member}">
+		<c:if test="${not empty sessionScope.bankmember}">
 		<div class="align-center">
 			<a href = "./add.aa"><button class="btn btn-primary">QnA 등록</button></a>
 		</div>

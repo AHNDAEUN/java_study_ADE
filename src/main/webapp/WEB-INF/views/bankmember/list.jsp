@@ -29,7 +29,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${requestScope.list}" var="dto">
+				<c:forEach items="${requestScope.dto.list}" var="dto">
 					<tr>
 						<td>${pageScope.dto.userName}</td>
 						<td>${pageScope.dto.name}</td>

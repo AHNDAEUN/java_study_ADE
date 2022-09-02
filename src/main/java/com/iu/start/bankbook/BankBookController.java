@@ -43,24 +43,29 @@ public class BankBookController {
 		return mv;
 	}
 	
-	@RequestMapping(value="add.aa", method=RequestMethod.GET)
-	public void add(BankBookDTO bankBookDTO, ModelAndView mv) throws Exception{
-		System.out.println("상품 등록 실행 GET");
-		
-		Calendar ca = Calendar.getInstance();
-//		long num = ca.getTimeInMillis();
-		
-		bankBookDTO = new BankBookDTO();
-		bankBookDTO.setBookNum(ca.getTimeInMillis());
-		mv.addObject("add", bankBookDTO);
-
-	}
 	
+	@RequestMapping(value="add.aa", method=RequestMethod.GET)
+	public void add(BankBookDTO bankBookDTO, Model model ) throws Exception{
+		System.out.println("상품 등록 실행 GET");
+		bankBookDTO = bankBookService.getDetail(bankBookDTO);
+		model.addAttribute("dto", bankBookDTO);
+	}
+		
+
+	
+	// /bankbook/add POST
+	// name, rate
 	@RequestMapping(value="add.aa", method=RequestMethod.POST)
 	public ModelAndView add(BankBookDTO bankBookDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("add post 실행");
+		System.out.println(bankBookDTO.getBookNum());
+		System.out.println(bankBookDTO.isBookSale());
+		System.out.println(bankBookDTO.getBookName());
+		System.out.println(bankBookDTO.getBookRate());
+		Calendar ca = Calendar.getInstance();
+		bankBookDTO.setBookNum(ca.getTimeInMillis());
 		int result= bankBookService.setBankBook(bankBookDTO);
 		
 		//등록 후 리스트 페이지로 이동

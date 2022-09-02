@@ -22,6 +22,7 @@ add.addEventListener("click", function(){
   
 //     <label for="files" class="form-label">File</label>
 //     <input type="file" name="files" class="form-control" id="files">
+//  * 버튼 추가 <button type= "button" class="del"> 삭제 </button>
 //   </div>
    
    //부모 Element div 생성
@@ -68,11 +69,50 @@ add.addEventListener("click", function(){
 
     t=document.createAttribute("id");
     t.value="files";
-
     i.setAttributeNode(t);
 
+    div.appendChild(i)
+    
+    
+    // 삭제버튼 생성
+    let b= document.createElement("button")
+    let bc= document.createTextNode("삭제")
+    b.appendChild(bc)
+
+    let ty= document.createAttribute("type")
+    ty.value="button";
+    
+    b.setAttributeNode(ty)
+    
+    
+    ty=document.createAttribute("class")
+    ty.value="del";
+    b.setAttributeNode(ty)
+
+    ty=document.createAttribute("title")
+    ty.value=idx;
+    b.setAttributeNode(ty);
+
+    div.appendChild(b);
 
     addFiles.append(div);
+ 
+count++;
+   idx++;
+
+})
+
+
+addFiles.addEventListener("click",function(event){
+
+   let button =event.target; // button
+   if(button.target.classList[0]=='del'){
+     
+         //속성명을 가져오는 것은 속성명을 쓰거나 getAttribute();
+   document.getElementById("file"+button.title).remove();
+      count--;
+
+}
 
 
 })
